@@ -1,8 +1,10 @@
-package com.esprit.scluptfit;
+package com.esprit.scluptfit.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.esprit.scluptfit.R;
 
 public class MainActivity extends AppCompatActivity {
 
