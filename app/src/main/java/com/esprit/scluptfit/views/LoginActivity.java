@@ -16,11 +16,26 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.utils.Database;
+import com.esprit.scluptfit.utils.MYService;
 import com.google.android.material.textfield.TextInputLayout;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
     TextInputLayout email,password;
+    CompositeDisposable compositeDisposable=new CompositeDisposable();
+    MYService myService;
 
+    @Override
+    protected void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent=new Intent(LoginActivity.this,SignUpActivity.class);
         startActivity(intent);
     }
+
 
     private  Boolean validatEmail(){
         email=(TextInputLayout) findViewById(R.id.email);
@@ -78,10 +94,27 @@ public class LoginActivity extends AppCompatActivity {
         email=(TextInputLayout) findViewById(R.id.email);
         password=(TextInputLayout) findViewById(R.id.password);
 
-        String userEnteredUsername=email.getEditText().getText().toString().trim();
+        String userEnteredEmail=email.getEditText().getText().toString().trim();
         String userEnteredPassword=password.getEditText().getText().toString().trim();
+      // Toast.makeText(this," userEnteredEmail :"+userEnteredEmail,Toast.LENGTH_LONG).show();
+       //init service
+       Retrofit database= Database.getInstance();
+       myService=database.create(MYService.class);
 
+       compositeDisposable.add(myService.loginUser(userEnteredEmail,userEnteredPassword)
+               .subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribe(new Consumer<String>() {
+                   @Override
+                   public void accept(String s) throws Exception {
+                        Toast.makeText(LoginActivity.this," "+s,Toast.LENGTH_LONG).show();
+                   }
+               })
+
+
+       );
         Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
         startActivity(intent);
     }
+
 }

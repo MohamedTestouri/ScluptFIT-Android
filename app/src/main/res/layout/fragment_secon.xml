@@ -45,6 +45,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/weightReg"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -64,54 +65,55 @@
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/birthdayReg"
+            android:id="@+id/phoneReg"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birthday"
+            android:hint="Phone"
             android:textColorHint="@color/secondaryColor"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:inputType="date"
-                />
+                android:inputType="phone"
+                android:textColor="@color/secondaryColor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Sexe :"
+            android:text="Sexe :"
             android:textSize="18sp"
             android:textColor="@color/secondaryColor"/>
         <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/radio_pirates"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="     Homme"
-            android:checked="true"
-            android:textColor="@color/secondaryColor">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
 
-        </com.google.android.material.radiobutton.MaterialRadioButton>
+            >
 
-
-            <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/radio_ninjas"
+            <RadioButton
+                android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="     Femme"
+                android:text="Homme"
                 android:textColor="@color/secondaryColor"
-               >
-        </com.google.android.material.radiobutton.MaterialRadioButton>
+                android:checked="true"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Femme"
+                android:textColor="@color/secondaryColor"/>
         </RadioGroup>
-
-
 
         <Button
             android:id="@+id/btn_return"
@@ -125,13 +127,13 @@
             android:textColor="@color/secondaryColor" />
 
         <Button
-            android:id="@+id/signReg"
+            android:id="@+id/Nextstep2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@color/primaryColor"
-            android:text="Sing UP"
+            android:text="NEXT STEP"
             android:textColor="#fff"
             android:transitionName="button_tran"
 

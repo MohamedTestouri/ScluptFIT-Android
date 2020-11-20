@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/primaryBackground"
     android:orientation="vertical"
     android:padding="20dp"
@@ -94,21 +95,27 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phoneReg"
+            android:id="@+id/password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone"
+            android:hint="Password"
+            app:passwordToggleEnabled="true"
+            android:transitionName="password_tran"
+            app:boxBackgroundColor="#303030"
+            app:hintTextColor="@color/secondaryColor"
             android:textColorHint="@color/secondaryColor"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:textColor="@color/secondaryColor" />
+                android:inputType="textPassword"
+                android:textColor="@color/secondaryColor"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
 
 

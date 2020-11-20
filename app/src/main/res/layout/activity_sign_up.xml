@@ -9,9 +9,7 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="20sp"/>
+
 
     <ImageView
         android:id="@+id/logo_image"
@@ -24,16 +22,14 @@
     <FrameLayout
         android:id="@+id/fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         >
 
 
 
         </FrameLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"

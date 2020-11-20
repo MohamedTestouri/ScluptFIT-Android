@@ -75,11 +75,10 @@ public class FragmentSecon extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_secon, container, false);
-        final Calendar myCalendar = Calendar.getInstance();
 
-        Button next = (Button) rootView.findViewById(R.id.btn_return);
-        Button sign = (Button) rootView.findViewById(R.id.signReg);
-        next.setOnClickListener(new View.OnClickListener() {
+        Button ret = (Button) rootView.findViewById(R.id.btn_return);
+        Button next = (Button) rootView.findViewById(R.id.Nextstep2);
+        ret.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v)
@@ -92,15 +91,19 @@ public class FragmentSecon extends Fragment {
                 ft.commit();
             }
         });
-        sign.setOnClickListener(new View.OnClickListener() {
+        next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (!validatheight() | !validatweight()) {
                     return;
                 } else {
-                    Intent intent = new Intent(getContext(), SignUpValideActivity.class);
-                    startActivity(intent);
+                    Fragment frag;
+                    frag =new FragmentTer();
+                    FragmentManager fm=getActivity().getSupportFragmentManager();
+                    FragmentTransaction ft=fm.beginTransaction();
+                    ft.replace(R.id.fragment,frag);
+                    ft.commit();
                 }
             }});
 
