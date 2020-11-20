@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/start2"
+    android:orientation="vertical"
+    tools:context=".views.StartActivity">
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo2"
+        android:layout_gravity="right"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/logo_name1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="BUILD YOUR"
+        android:layout_gravity="center"
+        android:textColor="@color/secondaryColor"
+        android:textSize="50sp"
+        android:transitionName="logo_text" />
+
+    <TextView
+        android:id="@+id/logo_nam2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-black"
+        android:text="       MUSCLE"
+        android:textColor="@color/primaryColor"
+        android:textSize="50sp"
+        android:transitionName="logo_text" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="145dp">
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        android:rotationX="1"
+        android:text="GET STARTED"
+        android:textColor="@color/secondaryColor"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp">
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        android:text="LOGIN"
+        android:textColor="@color/secondaryColor"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:onClick="login"
+
+        />
+</LinearLayout>
