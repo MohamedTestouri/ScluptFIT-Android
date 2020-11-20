@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.esprit.scluptfit">
-<uses-permission android:name="android.permission.INTERNET"/>
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ScluptFIT">
-        <activity android:name=".views.SignUpValideActivity"></activity>
+        android:theme="@style/Theme.ScluptFIT"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".views.ExerciceActivity"></activity>
+        <activity android:name=".views.SignUpValideActivity" />
         <activity android:name=".views.HomeActivity" />
         <activity android:name=".views.SignUpActivity" />
         <activity android:name=".views.LoginActivity" />
@@ -23,5 +24,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

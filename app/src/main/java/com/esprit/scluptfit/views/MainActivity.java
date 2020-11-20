@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this,StartActivity.class);
+                Intent intent = new Intent(MainActivity.this, StartActivity.class);
                 Pair[] pairs=new Pair[1];
                 pairs[0]=new Pair<View,String>(image,"logo_image");
                 ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);

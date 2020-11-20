@@ -49,6 +49,7 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/signupButton"
         android:layout_width="300dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content"

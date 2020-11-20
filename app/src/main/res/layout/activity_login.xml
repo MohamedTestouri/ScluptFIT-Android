@@ -113,7 +113,6 @@
             android:id="@+id/gmail_image"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:src="@drawable/gmail"
             android:transitionName="logo_image"
             android:layout_gravity="center"
             />
@@ -121,7 +120,6 @@
             android:id="@+id/facebook_image"
             android:layout_width="100dp"
             android:layout_height="70dp"
-            android:src="@drawable/facebook"
             android:transitionName="logo_image"
             android:layout_gravity="center"
             />
