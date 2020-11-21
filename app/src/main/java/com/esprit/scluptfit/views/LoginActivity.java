@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         String val=email.getEditText().getText().toString();
 
         if (val.isEmpty()){
-            email.setError("Field cannot be empty");
+            email.setError("Field cannot be empty !!00");
             return false;
         }else {
             email.setError(null);
