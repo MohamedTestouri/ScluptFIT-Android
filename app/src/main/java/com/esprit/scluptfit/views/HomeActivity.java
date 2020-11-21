@@ -14,7 +14,7 @@ private Button button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        button = findViewById(R.id.button);
+        button = findViewById(R.id.buttonA);
         button.setOnClickListener(l->{
             showFragment(new ExerciceFragement());
         });

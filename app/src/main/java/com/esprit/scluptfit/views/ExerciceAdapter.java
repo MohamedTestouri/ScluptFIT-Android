@@ -1,6 +1,7 @@
 package com.esprit.scluptfit.views;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,47 +18,47 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ExerciceAdapter extends RecyclerView.Adapter<ExerciceAdapter.ExerciceViewHolder> {
-    private final Context myContext;
-    private final ArrayList<Exercice> exerciceList;
+    private ArrayList<Exercice> exerciceArrayList = new ArrayList<>();
 
-    public ExerciceAdapter(Context myContext, ArrayList<Exercice> exerciceList) {
-        this.myContext = myContext;
-        this.exerciceList = exerciceList;
+    public ExerciceAdapter(ArrayList<Exercice> exerciceArrayList) {
+        this.exerciceArrayList = exerciceArrayList;
     }
+
     @NonNull
     @Override
     public ExerciceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(myContext);
-        View view = inflater.inflate(R.layout.list_exercices, null);
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_exercices, parent, false);
         return new ExerciceViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ExerciceViewHolder holder, int position) {
-        Exercice exercice = exerciceList.get(position);
+        Exercice exercice = exerciceArrayList.get(position);
         holder.descriptionExerciceTextView.setText(exercice.getDescription());
         holder.nameExerciceTextView.setText(exercice.getName());
         Picasso.get()
-                .load(exercice.getUrl())
+                .load(Uri.parse(exercice.getImage()))
                 .fit().centerCrop()
                 .into(holder.exerciceImageView);
+
     }
+
     @Override
     public int getItemCount() {
-        return exerciceList.size();
+        return exerciceArrayList.size();
     }
 
-     class ExerciceViewHolder extends RecyclerView.ViewHolder {
-         private final ImageView exerciceImageView;
-         private final TextView nameExerciceTextView;
-         private final TextView descriptionExerciceTextView;
+    public static class ExerciceViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView exerciceImageView;
+        private TextView nameExerciceTextView;
+        private TextView descriptionExerciceTextView;
 
-         public ExerciceViewHolder(@NonNull View itemView) {
-             super(itemView);
-             exerciceImageView = itemView.findViewById(R.id.exerciceImageView);
-             nameExerciceTextView = itemView.findViewById(R.id.nameExerciceTextView);
-             descriptionExerciceTextView = itemView.findViewById(R.id.descriptionExerciceTextView);
-
-    }
+        public ExerciceViewHolder(@NonNull View itemView) {
+            super(itemView);
+            nameExerciceTextView = itemView.findViewById(R.id.nameExerciceTextView);
+            descriptionExerciceTextView = itemView.findViewById(R.id.descriptionExerciceTextView);
+            exerciceImageView = itemView.findViewById(R.id.exerciceImageView);
+        }
     }
 }

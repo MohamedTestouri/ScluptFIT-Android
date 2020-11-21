@@ -41,9 +41,8 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
+                android:id="@+id/armCardView"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -67,37 +66,8 @@
                     android:textStyle="bold" />
 
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="32dp"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginVertical="8dp"
-                android:elevation="2dp"
-                card_view:cardCornerRadius="20dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    card_view:srcCompat="@drawable/start2"
-                    android:alpha=".75"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="ABS"
-                    android:textColor="@color/secondaryColor"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/legsCardView"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -121,9 +91,8 @@
                     android:textStyle="bold" />
 
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
-                android:id="@+id/absCard"
+                android:id="@+id/chestCardView"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -147,7 +116,7 @@
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/absCard6"
+                android:id="@+id/shoulderCardView"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -170,6 +139,7 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 

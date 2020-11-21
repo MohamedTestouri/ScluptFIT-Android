@@ -12,24 +12,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class ExerciceFragement extends Fragment {
     private CardView absCardView;
-    private RecyclerView exerciceRecyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView;
         rootView = inflater.inflate(R.layout.fragment_exercices, container, false);
         absCardView = rootView.findViewById(R.id.absCardView);
-        absCardView.setOnClickListener(l->{
-            startActivity(new Intent(getContext(), ExerciceActivity.class));
+        absCardView.setOnClickListener(l -> {
+            Intent intent = new Intent(getContext(), ExerciceActivity.class);
+            intent.putExtra("Category", "abs");
+            startActivity(intent);
         });
-        exerciceRecyclerView = rootView.findViewById(R.id.exerciceRecyclerView);
-        exerciceRecyclerView.setHasFixedSize(false); // no fix size
-        exerciceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return rootView;
     }
