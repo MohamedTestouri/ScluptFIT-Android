@@ -15,6 +15,10 @@ import androidx.fragment.app.Fragment;
 
 public class ExerciceFragement extends Fragment {
     private CardView absCardView;
+    private CardView chestCardView;
+    private CardView armCardView;
+    private CardView legsCardView;
+    private CardView shoulderCardView;
 
     @Nullable
     @Override
@@ -22,7 +26,31 @@ public class ExerciceFragement extends Fragment {
         View rootView;
         rootView = inflater.inflate(R.layout.fragment_exercices, container, false);
         absCardView = rootView.findViewById(R.id.absCardView);
+        chestCardView = rootView.findViewById(R.id.chestCardView);
+        armCardView = rootView.findViewById(R.id.armCardView);
+        legsCardView = rootView.findViewById(R.id.legsCardView);
+        shoulderCardView = rootView.findViewById(R.id.shoulderCardView);
         absCardView.setOnClickListener(l -> {
+            Intent intent = new Intent(getContext(), ExerciceActivity.class);
+            intent.putExtra("Category", "abs");
+            startActivity(intent);
+        });
+        chestCardView.setOnClickListener(l -> {
+            Intent intent = new Intent(getContext(), ExerciceActivity.class);
+            intent.putExtra("Category", "chest");
+            startActivity(intent);
+        });
+        armCardView.setOnClickListener(l -> {
+            Intent intent = new Intent(getContext(), ExerciceActivity.class);
+            intent.putExtra("Category", "abs");
+            startActivity(intent);
+        });
+        legsCardView.setOnClickListener(l -> {
+            Intent intent = new Intent(getContext(), ExerciceActivity.class);
+            intent.putExtra("Category", "abs");
+            startActivity(intent);
+        });
+        shoulderCardView.setOnClickListener(l -> {
             Intent intent = new Intent(getContext(), ExerciceActivity.class);
             intent.putExtra("Category", "abs");
             startActivity(intent);
