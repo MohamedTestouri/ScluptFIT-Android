@@ -1,4 +1,4 @@
-package com.esprit.scluptfit.views;
+package com.esprit.scluptfit.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.views.fragments.FragmentPrem;
 
 public class SignUpActivity extends AppCompatActivity {
 

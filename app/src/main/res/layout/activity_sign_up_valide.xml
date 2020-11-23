@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/sign_up_img"
     android:orientation="vertical"
-    tools:context=".views.SignUpValideActivity"
+    tools:context=".views.activities.SignUpValideActivity"
     android:padding="20dp"
     >
  *

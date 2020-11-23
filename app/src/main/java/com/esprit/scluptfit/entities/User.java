@@ -13,9 +13,9 @@ public class User {
     private String password;
     private String email;
 
-    private ArrayList<HealthInformation> HealthInformationArrayList = new ArrayList<>();
-    private ArrayList<Run> RunArrayList = new ArrayList<>();
-    private ArrayList<Activitie> ActivitieArrayList = new ArrayList<>();
+    private ArrayList<HealthInformation> HealthInformationArrayList;
+    private ArrayList<Run> RunArrayList;
+    private ArrayList<Activitie> ActivitieArrayList;
 
     public String getIdUser() {
         return idUser;

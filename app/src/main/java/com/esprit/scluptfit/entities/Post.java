@@ -11,7 +11,8 @@ public class Post {
     private Date date;
     private String image;
     private String idUser;
-    private ArrayList<Comment> CommentArrayList = new ArrayList<>();
+
+    private ArrayList<Comment> CommentArrayList;
 
     public Post(String idPost, String text, int likes, Date date, String image, String idUser, ArrayList<Comment> commentArrayList) {
         this.idPost = idPost;

@@ -1,4 +1,4 @@
-package com.esprit.scluptfit.views;
+package com.esprit.scluptfit.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
 

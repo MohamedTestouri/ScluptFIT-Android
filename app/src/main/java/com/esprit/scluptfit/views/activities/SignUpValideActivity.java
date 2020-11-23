@@ -1,4 +1,4 @@
-package com.esprit.scluptfit.views;
+package com.esprit.scluptfit.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,7 @@ public class SignUpValideActivity extends AppCompatActivity {
     }
 
     public void to_home(View view) {
-        Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
+        Intent intent=new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(intent);
     }
 }

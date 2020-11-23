@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ScluptFIT"
         android:usesCleartextTraffic="true">
-        <activity android:name=".views.ExerciceActivity"></activity>
-        <activity android:name=".views.SignUpValideActivity" />
-        <activity android:name=".views.HomeActivity" />
-        <activity android:name=".views.SignUpActivity" />
-        <activity android:name=".views.LoginActivity" />
-        <activity android:name=".views.StartActivity" />
-        <activity android:name=".views.MainActivity">
+        <activity android:name=".views.activities.ExerciceActivity"></activity>
+        <activity android:name=".views.activities.SignUpValideActivity" />
+        <activity android:name=".views.activities.HomeActivity" />
+        <activity android:name=".views.activities.SignUpActivity" />
+        <activity android:name=".views.activities.LoginActivity" />
+        <activity android:name=".views.activities.StartActivity" />
+        <activity android:name=".views.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

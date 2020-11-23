@@ -6,7 +6,7 @@
     android:background="@color/primaryBackground"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".views.FragmentSecon">
+    tools:context=".views.fragments.FragmentSecon">
 
     <!-- TODO: Update blank fragment layout -->
 

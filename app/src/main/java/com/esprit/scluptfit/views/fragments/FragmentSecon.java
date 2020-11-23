@@ -1,10 +1,8 @@
-package com.esprit.scluptfit.views;
+package com.esprit.scluptfit.views.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,16 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 
 import com.esprit.scluptfit.R;
 import com.google.android.material.textfield.TextInputLayout;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.

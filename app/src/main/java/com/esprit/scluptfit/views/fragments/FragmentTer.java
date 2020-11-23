@@ -1,25 +1,26 @@
-package com.esprit.scluptfit.views;
+package com.esprit.scluptfit.views.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-
-import com.esprit.scluptfit.R;
-import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.views.activities.SignUpValideActivity;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentPrem#newInstance} factory method to
+ * Use the {@link FragmentTer#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentPrem extends Fragment {
+public class FragmentTer extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +31,7 @@ public class FragmentPrem extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FragmentPrem() {
+    public FragmentTer() {
         // Required empty public constructor
     }
 
@@ -40,11 +41,11 @@ public class FragmentPrem extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentPrem.
+     * @return A new instance of fragment FragmentTer.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentPrem newInstance(String param1, String param2) {
-        FragmentPrem fragment = new FragmentPrem();
+    public static FragmentTer newInstance(String param1, String param2) {
+        FragmentTer fragment = new FragmentTer();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,65 +59,39 @@ public class FragmentPrem extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
         }
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View rootView = inflater.inflate(R.layout.fragment_prem, container, false);
-        Button next = (Button) rootView.findViewById(R.id.NextStep);
-        next.setOnClickListener(new OnClickListener() {
+        View rootView = inflater.inflate(R.layout.fragment_ter, container, false);
+
+        Button ret2 = (Button) rootView.findViewById(R.id.btn_return2);
+        Button sign = (Button) rootView.findViewById(R.id.signReg);
+        ret2.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v)
             {
-                if (!validatFirstname() | !validatLastname()){
-                    return;
-                } else {
-
                 Fragment frag;
                 frag =new FragmentSecon();
                 FragmentManager fm=getActivity().getSupportFragmentManager();
                 FragmentTransaction ft=fm.beginTransaction();
                 ft.replace(R.id.fragment,frag);
-                ft.commit();}
+                ft.commit();
             }
         });
+        sign.setOnClickListener(new View.OnClickListener() {
 
-        return  rootView;
-    }
+            @Override
+            public void onClick(View v) {
 
-
-    private  Boolean validatFirstname(){
-        TextInputLayout firstname=(TextInputLayout) getView().findViewById(R.id.Firstname);
-        String val=firstname.getEditText().getText().toString();
-
-        if (val.isEmpty()){
-            firstname.setError("Field cannot be empty");
-            return false;
-        }else {
-            firstname.setError(null);
-            firstname.setErrorEnabled(false);
-            return  true;
+                    Intent intent = new Intent(getContext(), SignUpValideActivity.class);
+                    startActivity(intent);
+            }});
 
 
-}
-    }
-    private  Boolean validatLastname(){
-        TextInputLayout lastname=(TextInputLayout) getView().findViewById(R.id.Lastname);
-        String val=lastname.getEditText().getText().toString();
-
-        if (val.isEmpty()){
-            lastname.setError("Field cannot be empty");
-            return false;
-        }else {
-            lastname.setError(null);
-            lastname.setErrorEnabled(false);
-            return  true;
-
-
-        }
-    }
+        return  rootView;    }
 }
