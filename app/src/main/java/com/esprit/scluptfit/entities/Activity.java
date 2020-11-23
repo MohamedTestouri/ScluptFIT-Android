@@ -1,27 +1,31 @@
 package com.esprit.scluptfit.entities;
 
-public class Activitie {
+import com.google.gson.annotations.SerializedName;
 
-    private String idActivitie;
+public class Activity {
+    @SerializedName("_id")
+    private String idActivity;
+    @SerializedName("sum")
     private int sum;
+    @SerializedName("categoryExercice")
     private String categoryExercice;
 
-    public Activitie(String idActivitie, int sum, String categoryExercice) {
-        this.idActivitie = idActivitie;
+    public Activity(String idActivity, int sum, String categoryExercice) {
+        this.idActivity = idActivity;
         this.sum = sum;
         this.categoryExercice = categoryExercice;
     }
 
-    public Activitie(int sum) {
+    public Activity(int sum) {
         this.sum = sum;
     }
 
-    public String getIdActivitie() {
-        return idActivitie;
+    public String getIdActivity() {
+        return idActivity;
     }
 
-    public void setIdActivitie(String idActivitie) {
-        this.idActivitie = idActivitie;
+    public void setIdActivity(String idActivity) {
+        this.idActivity = idActivity;
     }
 
     public int getSum() {

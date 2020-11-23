@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.esprit.scluptfit.R;
-import com.esprit.scluptfit.views.fragments.FragmentPrem;
+import com.esprit.scluptfit.views.fragments.SignupFragmentFirst;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         Fragment frag;
-        frag =new FragmentPrem();
+        frag =new SignupFragmentFirst();
         FragmentManager fm=getSupportFragmentManager();
         FragmentTransaction ft=fm.beginTransaction();
         ft.replace(R.id.fragment,frag);

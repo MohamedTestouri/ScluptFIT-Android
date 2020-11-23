@@ -1,13 +1,16 @@
 package com.esprit.scluptfit.views.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Exercice;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,6 +39,10 @@ public class ExerciceAdapter extends RecyclerView.Adapter<ExerciceAdapter.Exerci
         Exercice exercice = exerciceArrayList.get(position);
         holder.descriptionExerciceTextView.setText(exercice.getDescription());
         holder.nameExerciceTextView.setText(exercice.getName());
+       Picasso.get()
+                .load(exercice.getImage())
+                .fit().centerCrop()
+                .into(holder.exerciceImageView);
     }
 
     @Override
@@ -44,12 +51,14 @@ public class ExerciceAdapter extends RecyclerView.Adapter<ExerciceAdapter.Exerci
     }
 
     public class ExerciceViewHolder extends RecyclerView.ViewHolder {
+        private ImageView exerciceImageView;
         private TextView nameExerciceTextView;
         private TextView descriptionExerciceTextView;
         public ExerciceViewHolder(@NonNull View itemView) {
             super(itemView);
             nameExerciceTextView = itemView.findViewById(R.id.nameExerciceTextView);
             descriptionExerciceTextView = itemView.findViewById(R.id.descriptionExerciceTextView);
+            exerciceImageView = itemView.findViewById(R.id.exerciceImageView);
         }
     }
 }

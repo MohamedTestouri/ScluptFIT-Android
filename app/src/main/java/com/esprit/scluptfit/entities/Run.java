@@ -1,12 +1,17 @@
 package com.esprit.scluptfit.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Run {
-
+    @SerializedName("_id")
     private String idRuns;
+    @SerializedName("calories")
     private Double calories;
+    @SerializedName("distance")
     private Double distance;
+    @SerializedName("duration")
     private Date duration;
 
     public Run(String idRuns, Double calories, Double distance, Date duration) {

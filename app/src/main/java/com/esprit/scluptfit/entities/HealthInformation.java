@@ -1,13 +1,19 @@
 package com.esprit.scluptfit.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class HealthInformation {
-
+    @SerializedName("_id")
     private String idHealthInformation;
+    @SerializedName("calories")
     private Double calories;
+    @SerializedName("date")
     private Date date;
+    @SerializedName("weight")
     private Double weight;
+    @SerializedName("height")
     private Double height;
 
     public HealthInformation(String idHealthInformation, Double calories, Date date, Double weight, Double height) {

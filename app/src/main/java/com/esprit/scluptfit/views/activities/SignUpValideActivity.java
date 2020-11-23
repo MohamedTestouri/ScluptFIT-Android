@@ -16,8 +16,7 @@ public class SignUpValideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_valide);
     }
 
-    public void to_home(View view) {
-        Intent intent=new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(intent);
+    public void navigateToHome(View view) {
+        startActivity(new Intent(SignUpValideActivity.this, HomeActivity.class));
     }
 }

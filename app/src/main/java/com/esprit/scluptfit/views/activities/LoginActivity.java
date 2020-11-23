@@ -2,89 +2,58 @@ package com.esprit.scluptfit.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 
 import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.services.UserService;
 import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import io.reactivex.disposables.CompositeDisposable;
 
 public class LoginActivity extends AppCompatActivity {
-    TextInputLayout email,password;
-    CompositeDisposable compositeDisposable=new CompositeDisposable();
+    private TextInputLayout email;
+    private TextInputLayout password;
+    private Button loginButton;
+    private Button signupButton;
+    private UserService userService = new UserService();
 
-
-    @Override
-    protected void onStop() {
-        compositeDisposable.clear();
-        super.onStop();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        loginButton = findViewById(R.id.loginButton);
+        signupButton = findViewById(R.id.signupButton);
+        loginButton.setOnClickListener(l -> {
+            loginUser();
+        });
+        signupButton.setOnClickListener(l -> {
+            startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+        });
 
     }
 
-    public void SignUp(View view) {
-        Intent intent=new Intent(LoginActivity.this,SignUpActivity.class);
-        startActivity(intent);
-    }
 
-
-    private  Boolean validatEmail(){
-        email=(TextInputLayout) findViewById(R.id.email);
-        String val=email.getEditText().getText().toString();
-
-        if (val.isEmpty()){
-            email.setError("Field cannot be empty !!00");
+    private Boolean validateTextInput(TextInputLayout textInput) {
+        String val = textInput.getEditText().getText().toString();
+        if (val.isEmpty()) {
+            textInput.setError("Field cannot be empty");
             return false;
-        }else {
-            email.setError(null);
-            email.setErrorEnabled(false);
-            return  true;
+        } else {
+            textInput.setError(null);
+            textInput.setErrorEnabled(false);
+            return true;
         }
-
     }
 
-    private  Boolean validatPassword(){
-        password=(TextInputLayout) findViewById(R.id.password);
-        String val=password.getEditText().getText().toString();
-
-        if (val.isEmpty()){
-            password.setError("Field cannot be empty");
-            return false;
-        }else {
-            password.setError(null);
-            password.setErrorEnabled(false);
-            return  true;
-        }
-
-    }
-
-    public  void loginUser(View view){
-        if (!validatEmail() | !validatPassword()){
+    public void loginUser() {
+        if (!validateTextInput(email) | !validateTextInput(password)) {
             return;
         } else {
-            isUser();
+            userService.Login(LoginActivity.this, email.getEditText().getText().toString(), password.getEditText().getText().toString());
         }
-    }
-
-
-
-   public void isUser() {
-        email=(TextInputLayout) findViewById(R.id.email);
-        password=(TextInputLayout) findViewById(R.id.password);
-
-        String userEnteredEmail=email.getEditText().getText().toString().trim();
-        String userEnteredPassword=password.getEditText().getText().toString().trim();
-      // Toast.makeText(this," userEnteredEmail :"+userEnteredEmail,Toast.LENGTH_LONG).show();
-       //init service
-
-        Intent intent=new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(intent);
     }
 
 }

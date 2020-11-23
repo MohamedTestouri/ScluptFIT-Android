@@ -1,79 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryBackground"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".views.fragments.FragmentSecon">
+    tools:context=".views.fragments.SignupFragmentFirst">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical"
-        >
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/heightReg"
+                android:id="@+id/firstName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="height"
+                android:layout_weight="5"
+                android:hint="First Name"
                 android:textColorHint="@color/secondaryColor"
                 android:transitionName="username_tran"
-
-                android:layout_weight="5"
-                >
+                android:weightSum="1">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:inputType="number"
-                    />
+                    android:textColor="@color/secondaryColor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/weightReg"
+                android:id="@+id/lastName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="weight"
-                android:textColorHint="@color/secondaryColor"
                 android:layout_weight="5"
-                >
+                android:hint="Last Name"
+                android:textColorHint="@color/secondaryColor"
+                android:transitionName="username_tran">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondaryColor"
-                    android:inputType="number"
+
+
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phoneReg"
+            android:id="@+id/phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="Phone"
-            android:textColorHint="@color/secondaryColor"
-            >
+            android:textColorHint="@color/secondaryColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -83,55 +78,45 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sexe :"
-            android:textSize="18sp"
-            android:textColor="@color/secondaryColor"/>
+            android:text="Gender :"
+            android:textColor="@color/secondaryColor"
+            android:textSize="18sp" />
+
         <RadioGroup
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:orientation="horizontal"
 
             >
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/manRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Homme"
-                android:textColor="@color/secondaryColor"
                 android:checked="true"
-                />
+                android:text="Man"
+                android:textColor="@color/secondaryColor" />
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/womanRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Femme"
-                android:textColor="@color/secondaryColor"/>
+                android:text="Woman"
+                android:textColor="@color/secondaryColor" />
         </RadioGroup>
 
         <Button
-            android:id="@+id/btn_return"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:background="#00000000"
-            android:elevation="0dp"
-            android:text="return"
-            android:textColor="@color/secondaryColor" />
-
-        <Button
-            android:id="@+id/Nextstep2"
+            android:id="@+id/NextStep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:background="@color/primaryColor"
             android:text="NEXT STEP"
             android:textColor="#fff"

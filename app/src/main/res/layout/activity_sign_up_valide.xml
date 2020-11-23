@@ -16,20 +16,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Hello there, Welcom Back"
+        android:text="Hello there, Welcome Back"
         android:transitionName="logo_text"
         android:textSize="60sp"
         android:textColor="@color/primaryColor"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
 
-    </RelativeLayout>
-
-
-
-    <TextView
+   <TextView
         android:id="@+id/slogan_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,21 +32,9 @@
         android:transitionName="logo_desc"
         android:textColor="@color/secondaryColor"
         android:layout_gravity="center"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="145dp">
-
-    </RelativeLayout>
 
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="15dp">
-
-    </RelativeLayout>
-
-    <Button
+   <Button
         android:id="@+id/login_btn"
         android:layout_width="300dp"
         android:layout_gravity="center"
@@ -63,7 +44,7 @@
         android:textColor="@color/secondaryColor"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:onClick="to_home"
+        android:onClick="navigateToHome"
 
         />
 </LinearLayout>

@@ -29,8 +29,12 @@ public class ExerciceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercice);
         startButton = findViewById(R.id.startButton);
+        getExercices();
+    }
+
+    private void getExercices() {
         GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-        Call<ArrayList<Exercice>> call = service.getAllExercices();
+        Call<ArrayList<Exercice>> call = service.getExercicesByCategory(getIntent().getExtras().getString("Category"));
         call.enqueue(new Callback<ArrayList<Exercice>>() {
             @Override
             public void onResponse(Call<ArrayList<Exercice>> call, Response<ArrayList<Exercice>> response) {

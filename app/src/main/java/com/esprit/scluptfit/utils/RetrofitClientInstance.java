@@ -1,12 +1,13 @@
 package com.esprit.scluptfit.utils;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClientInstance {
 
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://172.16.138.38:6666";
+    private static final String BASE_URL = "http://192.168.1.7:6666";
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
@@ -17,4 +18,5 @@ public class RetrofitClientInstance {
         }
         return retrofit;
     }
+
 }

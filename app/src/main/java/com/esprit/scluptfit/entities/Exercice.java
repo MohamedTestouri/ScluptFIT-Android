@@ -1,12 +1,21 @@
 package com.esprit.scluptfit.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Exercice {
+    @SerializedName("_id")
     private String idExercice;
+    @SerializedName("name")
     private String name;
+    @SerializedName("description")
     private String description;
+    @SerializedName("category")
     private String category;
+    @SerializedName("model")
     private String model;
+    @SerializedName("audio")
     private String audio;
+    @SerializedName("image")
     private String image;
 
     public Exercice(String idExercice, String name, String description, String category, String model, String audio, String image) {

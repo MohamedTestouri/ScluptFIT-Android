@@ -1,21 +1,59 @@
 package com.esprit.scluptfit.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
-
+    @SerializedName("_id")
     private String idUser;
+    @SerializedName("fullName")
     private String fullName;
+    @SerializedName("phone")
     private String phone;
+    @SerializedName("birthday")
     private Date birthday;
+    @SerializedName("sexe")
     private String sexe;
+    @SerializedName("password")
     private String password;
+    @SerializedName("email")
     private String email;
-
+    @SerializedName("healthInformation")
     private ArrayList<HealthInformation> HealthInformationArrayList;
+    @SerializedName("runs")
     private ArrayList<Run> RunArrayList;
-    private ArrayList<Activitie> ActivitieArrayList;
+    @SerializedName("activities")
+    private ArrayList<Activity> activitiesArrayList;
+
+    public User(String email, String password) {
+        this.password = password;
+        this.email = email;
+    }
+
+    public User(String idUser, String fullName, String phone, Date birthday, String sexe, String password, String email, ArrayList<HealthInformation> healthInformationArrayList, ArrayList<Run> runArrayList, ArrayList<Activity> activitiesArrayList) {
+        this.idUser = idUser;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.sexe = sexe;
+        this.password = password;
+        this.email = email;
+        HealthInformationArrayList = healthInformationArrayList;
+        RunArrayList = runArrayList;
+        this.activitiesArrayList = activitiesArrayList;
+    }
+
+    public User(String fullName, String phone, Date birthday, String sexe, String password, String email, ArrayList<HealthInformation> healthInformationArrayList) {
+        this.fullName = fullName;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.sexe = sexe;
+        this.password = password;
+        this.email = email;
+        HealthInformationArrayList = healthInformationArrayList;
+    }
 
     public String getIdUser() {
         return idUser;
@@ -89,11 +127,11 @@ public class User {
         RunArrayList = runArrayList;
     }
 
-    public ArrayList<Activitie> getActivitieArrayList() {
-        return ActivitieArrayList;
+    public ArrayList<Activity> getActivitiesArrayList() {
+        return activitiesArrayList;
     }
 
-    public void setActivitieArrayList(ArrayList<Activitie> activitieArrayList) {
-        ActivitieArrayList = activitieArrayList;
+    public void setActivitiesArrayList(ArrayList<Activity> activitiesArrayList) {
+        this.activitiesArrayList = activitiesArrayList;
     }
 }
