@@ -48,7 +48,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/profile_image"
                     android:includeFontPadding="false"
-                    android:text="Wassim_Sefi"
+                    android:text="Wassim_Sefi !"
                     android:textSize="14sp" />
 
             </RelativeLayout>
