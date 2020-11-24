@@ -1,23 +1,38 @@
 package com.esprit.scluptfit.views.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.entities.Post;
+import com.esprit.scluptfit.views.adapters.ForumAdapter;
 
+import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ForumFragment extends Fragment {
+    private RecyclerView postRecyclerView;
+    private ForumAdapter forumAdapter;
+    private ArrayList<Post> postArrayList = new ArrayList<>();
 
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forum, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView;
+        rootView = inflater.inflate(R.layout.fragment_forum, container, false);
+        postRecyclerView = rootView.findViewById(R.id.postRecyclerView);
+        postRecyclerView.setHasFixedSize(false); // no fix size
+        postRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        postArrayList.add(new Post("wassim", 5));
+        forumAdapter = new ForumAdapter(getContext(), postArrayList);
+        postRecyclerView.setAdapter(forumAdapter);
+        return rootView;
     }
 }

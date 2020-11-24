@@ -35,6 +35,11 @@ public class Post {
         this.idUser = idUser;
     }
 
+    public Post(String text, int likes) {
+        this.text = text;
+        this.likes = likes;
+    }
+
     public String getIdPost() {
         return idPost;
     }

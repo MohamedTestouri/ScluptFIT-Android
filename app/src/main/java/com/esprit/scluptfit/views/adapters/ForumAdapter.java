@@ -42,15 +42,21 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
                 .load(post.getImage())
                 .fit().centerCrop()
                 .into(holder.imageUserImageView);
-         holder.nameUserTextView.setText();*/
+         holder.nameUserTextView.setText();
         holder.datePostTextView.setText(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(post.getDate()));
         holder.textPostTextView.setText(post.getText());
         Picasso.get()
                 .load(post.getImage())
                 .fit().centerCrop()
-                .into(holder.imagePostImageView);
-        holder.likeButton.setOnClickListener(l->{/*MAKE A LIKE*/});
-        holder.commentButton.setOnClickListener(l->{/*OPEN MODAL LIST OF COMMENTS*/});
+                .into(holder.imagePostImageView);*/
+//        holder.likeButton.setOnClickListener(l->{/*MAKE A LIKE*/});
+//        holder.commentButton.setOnClickListener(l->{/*OPEN MODAL LIST OF COMMENTS*/});
+        holder.textPostTextView.setText(post.getText());
+       // holder.datePostTextView.setText(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format("2020-11-20 23:50:25"));
+       // holder.textPostTextView.setText(""+post.getLikes());
+
+
+
     }
 
     @Override
