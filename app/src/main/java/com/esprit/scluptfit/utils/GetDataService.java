@@ -2,6 +2,7 @@ package com.esprit.scluptfit.utils;
 
 import com.esprit.scluptfit.entities.Exercice;
 import com.esprit.scluptfit.entities.HealthInformation;
+import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
 
 import java.util.ArrayList;
@@ -18,10 +19,8 @@ public interface GetDataService {
     /* **** EXERCICES SERVICES **** */
     @GET("/exercices")
     Call<ArrayList<Exercice>> getAllExercices();
-
-    @GET("/exercices/{idUser}")
-    Call<ArrayList<Exercice>> getExercicesByIdUser(@Path("idUser") String idUser);
-
+    @GET("/exercices/{_id}")
+    Call<ArrayList<Exercice>> getExercicesById(@Path("_id") String _id);
     @GET("/exercices/find/{category}")
     Call<ArrayList<Exercice>> getExercicesByCategory(@Path("category") String category);
 
@@ -34,4 +33,12 @@ public interface GetDataService {
     Call<ArrayList<User>> getUserByIdUser(@Path("_id") String idUser );
     @PUT("/users/hi/{_id}")
     Call<User> addHealthInformation(@Path("_id") String idUser, @Body HealthInformation healthInformation);
+
+    /* **** POSTS SERVICE **** */
+    @GET("/posts")
+    Call<ArrayList<Post>> getAllPosts();
+    @GET("/posts/{_id}")
+    Call<ArrayList<Post>> getPostsById(@Path("_id") String _id);
+    @GET("/posts/find/{idUser}")
+    Call<ArrayList<Post>> getPostsByIdUser(@Path("idUser") String idUser);
 }

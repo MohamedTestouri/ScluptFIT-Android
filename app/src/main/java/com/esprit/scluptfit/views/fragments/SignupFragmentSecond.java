@@ -66,7 +66,7 @@ public class SignupFragmentSecond extends Fragment {
     public void showFragment(String idUser) {
         Fragment fragment = new SignupFragmentThird();
         Bundle data = new Bundle();
-        data.putString("idUser", idUser);
+        data.putString("idUser", idUser        );
         fragment.setArguments(data);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
     }
