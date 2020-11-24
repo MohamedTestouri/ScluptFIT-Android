@@ -1,0 +1,58 @@
+<!-- bottom_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_icon_home"
+        android:title="Home"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#FF9C07"
+        android:onClick="versactivite1"
+        app:showAsAction="never"  />
+
+    <item
+        android:id="@+id/location"
+        android:icon="@drawable/ic_icon_location"
+        android:title="Location"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#FF9C07"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/fitness"
+        android:icon="@drawable/ic_icon_fitness"
+        android:title="Fitness"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#FF9C07"
+        app:showAsAction="never"    />
+    <item
+        android:id="@+id/running"
+        android:icon="@drawable/ic_icon_running"
+        android:title="Running"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#FF9C07"
+        app:showAsAction="never"    />
+    <item
+        android:id="@+id/forum"
+        android:icon="@drawable/ic_icon_forum"
+        android:title="Forum"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#FF9C07"
+        app:showAsAction="never"    />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_icon_person"
+        android:title="Profile"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#FF9C07"
+        app:showAsAction="never"    />
+
+</menu>
+
+    <!-- layout.xml -->
