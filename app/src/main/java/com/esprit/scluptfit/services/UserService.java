@@ -61,17 +61,4 @@ public class UserService {
         });
     }
 
-    public void addHealthInformation(String idUser, HealthInformation healthInformation) {
-        Call<User> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).addHealthInformation(idUser, healthInformation);
-        call.enqueue(new Callback<User>() {
-
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-            }
-        });
-    }
 }

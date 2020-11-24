@@ -35,9 +35,6 @@ public class SignupFragmentThird extends Fragment {
                 if (!validateTextInput(height) | !validateTextInput(weight)) {
                     return;
                 } else {
-                    userService.addHealthInformation(getArguments().getString("idUser"),
-                            new HealthInformation(Double.valueOf(weight.getEditText().getText().toString()),
-                                    Double.valueOf(height.getEditText().getText().toString())));
                     startActivity(new Intent(getContext(), SignUpValideActivity.class));
                 }
             }
