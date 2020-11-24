@@ -4,42 +4,40 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.entities.HealthInformation;
+import com.esprit.scluptfit.services.UserService;
 import com.esprit.scluptfit.views.activities.SignUpValideActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SignupFragmentThird extends Fragment {
-    private TextInputLayout email;
-    private TextInputLayout password;
-    private TextInputLayout confirmPassword;
-    private Button signupButton;
+    private TextInputLayout weight;
+    private TextInputLayout height;
+    private Button nextButton;
+    private UserService userService = new UserService();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_signup_third, container, false);
-        email = rootView.findViewById(R.id.email);
-        password = rootView.findViewById(R.id.password);
-        confirmPassword = rootView.findViewById(R.id.confirmPassword);
-        signupButton = rootView.findViewById(R.id.signupButton);
-        signupButton.setOnClickListener(new View.OnClickListener() {
+        weight = rootView.findViewById(R.id.weight);
+        height = rootView.findViewById(R.id.height);
+        nextButton = rootView.findViewById(R.id.nextStepButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validateTextInput(email) | !validateTextInput(password) | !validateTextInput(confirmPassword)) {
+                if (!validateTextInput(height) | !validateTextInput(weight)) {
                     return;
-                } else if (!password.getEditText().getText().toString().equals(confirmPassword.getEditText().getText().toString())) {
-                    Toast.makeText(getContext(), "Password doesn't match ! TRY AGAIN!", Toast.LENGTH_LONG).show();
-                    password.getEditText().getText().clear();
-                    confirmPassword.getEditText().getText().clear();
                 } else {
+                    userService.addHealthInformation(getArguments().getString("idUser"),
+                            new HealthInformation(Double.valueOf(weight.getEditText().getText().toString()),
+                                    Double.valueOf(height.getEditText().getText().toString())));
                     startActivity(new Intent(getContext(), SignUpValideActivity.class));
                 }
             }

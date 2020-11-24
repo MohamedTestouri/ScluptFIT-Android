@@ -15,13 +15,16 @@ public class HealthInformation {
     private Double weight;
     @SerializedName("height")
     private Double height;
+    @SerializedName("steps")
+    private int steps;
 
-    public HealthInformation(String idHealthInformation, Double calories, Date date, Double weight, Double height) {
+    public HealthInformation(String idHealthInformation, Double calories, Date date, Double weight, Double height, int steps) {
         this.idHealthInformation = idHealthInformation;
         this.calories = calories;
         this.date = date;
         this.weight = weight;
         this.height = height;
+        this.steps = steps;
     }
 
     public HealthInformation(Double weight, Double height) {
@@ -29,10 +32,11 @@ public class HealthInformation {
         this.height = height;
     }
 
-    public HealthInformation(Double calories, Double weight, Double height) {
+    public HealthInformation(Double calories, Double weight, Double height, int steps) {
         this.calories = calories;
         this.weight = weight;
         this.height = height;
+        this.steps = steps;
     }
 
     public String getIdHealthInformation() {
@@ -41,6 +45,14 @@ public class HealthInformation {
 
     public void setIdHealthInformation(String idHealthInformation) {
         this.idHealthInformation = idHealthInformation;
+    }
+
+    public int getSteps() {
+        return steps;
+    }
+
+    public void setSteps(int steps) {
+        this.steps = steps;
     }
 
     public Double getCalories() {

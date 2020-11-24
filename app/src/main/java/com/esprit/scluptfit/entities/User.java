@@ -23,7 +23,7 @@ public class User {
     @SerializedName("healthInformation")
     private ArrayList<HealthInformation> HealthInformationArrayList;
     @SerializedName("runs")
-    private ArrayList<Run> RunArrayList;
+    private ArrayList<Run> RunArrayList; //Run [] run;
     @SerializedName("activities")
     private ArrayList<Activity> activitiesArrayList;
 
@@ -45,15 +45,15 @@ public class User {
         this.activitiesArrayList = activitiesArrayList;
     }
 
-    public User(String fullName, String phone, Date birthday, String sexe, String password, String email, ArrayList<HealthInformation> healthInformationArrayList) {
+    public User(String fullName, String phone, Date birthday, String sexe, String password, String email) {
         this.fullName = fullName;
         this.phone = phone;
         this.birthday = birthday;
         this.sexe = sexe;
         this.password = password;
         this.email = email;
-        HealthInformationArrayList = healthInformationArrayList;
     }
+
 
     public String getIdUser() {
         return idUser;

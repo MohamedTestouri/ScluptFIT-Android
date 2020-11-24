@@ -101,28 +101,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center">
-        <ImageView
-            android:id="@+id/gmail_image"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:transitionName="logo_image"
-            android:layout_gravity="center"
-            />
-        <ImageView
-            android:id="@+id/facebook_image"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:transitionName="logo_image"
-            android:layout_gravity="center"
-            />
-
-    </LinearLayout>
+        android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/signupButton"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:background="#fff"
@@ -130,8 +114,7 @@
             android:fontFamily="serif"
             android:text="New User? SIGN UP"
             android:textColor="@color/primaryColor"
-            android:transitionName="button_signup_tran"
-            />
+            android:transitionName="button_signup_tran" />
     </LinearLayout>
 
 </LinearLayout>
