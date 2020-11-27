@@ -23,7 +23,7 @@ public class User {
     @SerializedName("healthInformation")
     private ArrayList<HealthInformation> HealthInformationArrayList;
     @SerializedName("runs")
-    private ArrayList<Run> RunArrayList; //Run [] run;
+    private ArrayList<Run> RunArrayList;
     @SerializedName("activities")
     private ArrayList<Activity> activitiesArrayList;
 

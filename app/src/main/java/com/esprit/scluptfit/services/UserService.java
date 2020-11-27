@@ -47,12 +47,13 @@ public class UserService {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                try {
+             /*   try {
                     JSONObject jsonObject = new JSONObject(response.body().getIdUser());
                     Log.d("IDUSER", String.valueOf(jsonObject));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }*/
             }
 
             @Override
