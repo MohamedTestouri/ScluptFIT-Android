@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home" translatable="true">Home</string>
+    <string name="map_key">AIzaSyAuxCJro8AnPr5Q9i40M2GxNrMeATxUDes</string>
 </resources>
