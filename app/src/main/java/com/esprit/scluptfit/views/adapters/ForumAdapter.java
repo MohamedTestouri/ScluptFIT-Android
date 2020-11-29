@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
@@ -38,25 +39,18 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
     @Override
     public void onBindViewHolder(@NonNull ForumViewHolder holder, int position) {
         Post post = postArrayList.get(position);
-        /*Picasso.get()
-                .load(post.getImage())
-                .fit().centerCrop()
-                .into(holder.imageUserImageView);
-         holder.nameUserTextView.setText();
-        holder.datePostTextView.setText(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(post.getDate()));
-        holder.textPostTextView.setText(post.getText());
         Picasso.get()
                 .load(post.getImage())
                 .fit().centerCrop()
-                .into(holder.imagePostImageView);*/
-//        holder.likeButton.setOnClickListener(l->{/*MAKE A LIKE*/});
-//        holder.commentButton.setOnClickListener(l->{/*OPEN MODAL LIST OF COMMENTS*/});
+                .into(holder.imagePostImageView);
+        holder.datePostTextView.setText(post.getIdUser());
+        holder.datePostTextView.setText(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(post.getDate()));
         holder.textPostTextView.setText(post.getText());
-       // holder.datePostTextView.setText(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format("2020-11-20 23:50:25"));
-       // holder.textPostTextView.setText(""+post.getLikes());
-
-
-
+        holder.nbrlikeTextViwe.setText(""+post.getLikes());
+       /* Picasso.get()
+                .load(post.getImage())
+                .fit().centerCrop()
+                .into(holder.imageUserImageView);*/
     }
 
     @Override
@@ -70,16 +64,20 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
         private TextView datePostTextView;
         private TextView textPostTextView;
         private ImageView imagePostImageView;
-        private Button likeButton;
-        private Button commentButton;
+        private RelativeLayout likeButton;
+        private RelativeLayout commentButton;
+        private TextView nbrlikeTextViwe;
+
+
 
         public ForumViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageUserImageView = itemView.findViewById(R.id.imageUserImageView);
+            imageUserImageView = itemView.findViewById(R.id.img_profile);
             datePostTextView = itemView.findViewById(R.id.datePostTextView);
-            nameUserTextView = itemView.findViewById(R.id.nameExerciceTextView);
+            nameUserTextView = itemView.findViewById(R.id.nameUserTextView);
             textPostTextView = itemView.findViewById(R.id.textPostTextView);
             imagePostImageView = itemView.findViewById(R.id.imagePostImageView);
+            nbrlikeTextViwe = itemView.findViewById(R.id.nbr_like);
             likeButton = itemView.findViewById(R.id.likeButton);
             commentButton = itemView.findViewById(R.id.commentButton);
         }
