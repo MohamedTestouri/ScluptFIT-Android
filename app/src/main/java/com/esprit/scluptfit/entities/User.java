@@ -21,18 +21,196 @@ public class User {
     @SerializedName("email")
     private String email;
     @SerializedName("healthInformation")
-    private ArrayList<HealthInformation> HealthInformationArrayList;
+    public ArrayList<HealthInformation> healthInformation;
     @SerializedName("runs")
-    private ArrayList<Run> RunArrayList;
+    public ArrayList<Run> run;
     @SerializedName("activities")
-    private ArrayList<Activity> activitiesArrayList;
+    public ArrayList<Activity> activity;
 
-    public User(String email, String password) {
-        this.password = password;
-        this.email = email;
+    public static class HealthInformation {
+        @SerializedName("_id")
+        private String idHealthInformation;
+        @SerializedName("calories")
+        private Double calories;
+        @SerializedName("date")
+        private Date date;
+        @SerializedName("weight")
+        private Double weight;
+        @SerializedName("height")
+        private Double height;
+        @SerializedName("steps")
+        private int steps;
+
+        public HealthInformation(String idHealthInformation, Double calories, Date date, Double weight, Double height, int steps) {
+            this.idHealthInformation = idHealthInformation;
+            this.calories = calories;
+            this.date = date;
+            this.weight = weight;
+            this.height = height;
+            this.steps = steps;
+        }
+
+        public HealthInformation(Double weight, Double height) {
+            this.weight = weight;
+            this.height = height;
+        }
+
+        public HealthInformation(Double calories, Double weight, Double height, int steps) {
+            this.calories = calories;
+            this.weight = weight;
+            this.height = height;
+            this.steps = steps;
+        }
+
+        public String getIdHealthInformation() {
+            return idHealthInformation;
+        }
+
+        public void setIdHealthInformation(String idHealthInformation) {
+            this.idHealthInformation = idHealthInformation;
+        }
+
+        public int getSteps() {
+            return steps;
+        }
+
+        public void setSteps(int steps) {
+            this.steps = steps;
+        }
+
+        public Double getCalories() {
+            return calories;
+        }
+
+        public void setCalories(Double calories) {
+            this.calories = calories;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public void setDate(Date date) {
+            this.date = date;
+        }
+
+        public Double getWeight() {
+            return weight;
+        }
+
+        public void setWeight(Double weight) {
+            this.weight = weight;
+        }
+
+        public Double getHeight() {
+            return height;
+        }
+
+        public void setHeight(Double height) {
+            this.height = height;
+        }
     }
 
-    public User(String idUser, String fullName, String phone, Date birthday, String sexe, String password, String email, ArrayList<HealthInformation> healthInformationArrayList, ArrayList<Run> runArrayList, ArrayList<Activity> activitiesArrayList) {
+    public static class Run {
+        @SerializedName("_id")
+        private String idRuns;
+        @SerializedName("calories")
+        private Double calories;
+        @SerializedName("distance")
+        private Double distance;
+        @SerializedName("duration")
+        private Date duration;
+
+        public Run(String idRuns, Double calories, Double distance, Date duration) {
+            this.idRuns = idRuns;
+            this.calories = calories;
+            this.distance = distance;
+            this.duration = duration;
+        }
+
+        public Run(Double calories, Double distance) {
+            this.calories = calories;
+            this.distance = distance;
+
+        }
+
+        public String getIdRuns() {
+            return idRuns;
+        }
+
+        public void setIdRuns(String idRuns) {
+            this.idRuns = idRuns;
+        }
+
+        public Double getCalories() {
+            return calories;
+        }
+
+        public void setCalories(Double calories) {
+            this.calories = calories;
+        }
+
+        public Double getDistance() {
+            return distance;
+        }
+
+        public void setDistance(Double distance) {
+            this.distance = distance;
+        }
+
+        public Date getDuration() {
+            return duration;
+        }
+
+        public void setDuration(Date duration) {
+            this.duration = duration;
+        }
+    }
+
+    public static class Activity {
+        @SerializedName("_id")
+        private String idActivity;
+        @SerializedName("sum")
+        private int sum;
+        @SerializedName("categoryExercice")
+        private String categoryExercice;
+
+        public Activity(String idActivity, int sum, String categoryExercice) {
+            this.idActivity = idActivity;
+            this.sum = sum;
+            this.categoryExercice = categoryExercice;
+        }
+
+        public Activity(int sum) {
+            this.sum = sum;
+        }
+
+        public String getIdActivity() {
+            return idActivity;
+        }
+
+        public void setIdActivity(String idActivity) {
+            this.idActivity = idActivity;
+        }
+
+        public int getSum() {
+            return sum;
+        }
+
+        public void setSum(int sum) {
+            this.sum = sum;
+        }
+
+        public String getCategoryExercice() {
+            return categoryExercice;
+        }
+
+        public void setCategoryExercice(String categoryExercice) {
+            this.categoryExercice = categoryExercice;
+        }
+    }
+
+    public User(String idUser, String fullName, String phone, Date birthday, String sexe, String password, String email, ArrayList<HealthInformation> healthInformation, ArrayList<Run> run, ArrayList<Activity> activity) {
         this.idUser = idUser;
         this.fullName = fullName;
         this.phone = phone;
@@ -40,9 +218,9 @@ public class User {
         this.sexe = sexe;
         this.password = password;
         this.email = email;
-        HealthInformationArrayList = healthInformationArrayList;
-        RunArrayList = runArrayList;
-        this.activitiesArrayList = activitiesArrayList;
+        this.healthInformation = healthInformation;
+        this.run = run;
+        this.activity = activity;
     }
 
     public User(String fullName, String phone, Date birthday, String sexe, String password, String email) {
@@ -54,6 +232,10 @@ public class User {
         this.email = email;
     }
 
+    public User(String password, String email) {
+        this.password = password;
+        this.email = email;
+    }
 
     public String getIdUser() {
         return idUser;
@@ -111,27 +293,28 @@ public class User {
         this.email = email;
     }
 
-    public ArrayList<HealthInformation> getHealthInformationArrayList() {
-        return HealthInformationArrayList;
+    public ArrayList<HealthInformation> getHealthInformation() {
+        return healthInformation;
     }
 
-    public void setHealthInformationArrayList(ArrayList<HealthInformation> healthInformationArrayList) {
-        HealthInformationArrayList = healthInformationArrayList;
+    public void setHealthInformation(ArrayList<HealthInformation> healthInformation) {
+        this.healthInformation = healthInformation;
     }
 
-    public ArrayList<Run> getRunArrayList() {
-        return RunArrayList;
+    public ArrayList<Run> getRun() {
+        return run;
     }
 
-    public void setRunArrayList(ArrayList<Run> runArrayList) {
-        RunArrayList = runArrayList;
+    public void setRun(ArrayList<Run> run) {
+        this.run = run;
     }
 
-    public ArrayList<Activity> getActivitiesArrayList() {
-        return activitiesArrayList;
+    public ArrayList<Activity> getActivity() {
+        return activity;
     }
 
-    public void setActivitiesArrayList(ArrayList<Activity> activitiesArrayList) {
-        this.activitiesArrayList = activitiesArrayList;
+    public void setActivity(ArrayList<Activity> activity) {
+        this.activity = activity;
     }
+
 }

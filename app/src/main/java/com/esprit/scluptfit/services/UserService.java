@@ -5,15 +5,13 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.esprit.scluptfit.entities.HealthInformation;
 import com.esprit.scluptfit.entities.User;
 import com.esprit.scluptfit.utils.GetDataService;
 import com.esprit.scluptfit.utils.LoginResponse;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
 import com.esprit.scluptfit.views.activities.HomeActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,13 +45,6 @@ public class UserService {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-             /*   try {
-                    JSONObject jsonObject = new JSONObject(response.body().getIdUser());
-                    Log.d("IDUSER", String.valueOf(jsonObject));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }*/
             }
 
             @Override
@@ -62,4 +53,25 @@ public class UserService {
         });
     }
 
+public void addHealthInformation() {
+        ArrayList<User.HealthInformation> healthInformationArrayList = new ArrayList<>();
+        User.HealthInformation healthInformation = new User.HealthInformation(25.2, 30.0);
+        healthInformationArrayList.add(healthInformation);
+        Call<User> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).addHealthInformation("5fb31113ae4613314cbcd860", healthInformationArrayList);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(!response.isSuccessful()){
+                    Log.d("Health", "NOT OKAY" );
+                }else {
+                    Log.d("Health", "OKAY" );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+}
 }

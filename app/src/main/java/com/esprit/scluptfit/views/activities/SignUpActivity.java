@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.views.fragments.SignupFragmentFirst;
+import com.esprit.scluptfit.views.fragments.SignupFragmentThird;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -17,12 +18,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        Fragment frag;
-        frag =new SignupFragmentFirst();
-        FragmentManager fm=getSupportFragmentManager();
-        FragmentTransaction ft=fm.beginTransaction();
-        ft.replace(R.id.fragment,frag);
-        ft.commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SignupFragmentThird()).commit();
     }
 
     public void SignUp(View view) {
