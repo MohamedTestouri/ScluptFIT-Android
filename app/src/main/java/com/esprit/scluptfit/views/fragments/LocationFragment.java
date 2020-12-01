@@ -41,52 +41,43 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_location, container, false);
-
-        searchView = view.findViewById(R.id.sv_location);
-        mapFragment = (SupportMapFragment)
-                getChildFragmentManager().findFragmentById(R.id.google_map);
-
-        //Mon position
+        View rootView = inflater.inflate(R.layout.fragment_location, container, false);
+        searchView = rootView.findViewById(R.id.sv_location);
+        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
 
         client = LocationServices.getFusedLocationProviderClient(getActivity());
-
-        if (ActivityCompat.checkSelfPermission(getContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
-            // getCurrentLocation
-            Task<Location> task = client.getLastLocation();
-            task.addOnSuccessListener(new OnSuccessListener<Location>() {
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            client.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(Location location) {
-                    if(location != null){
-
+                    if (location != null) {
                         mapFragment.getMapAsync(new OnMapReadyCallback() {
                             @Override
                             public void onMapReady(GoogleMap googleMap) {
-                                LatLng latLng=new LatLng(location.getLatitude()
-                                        ,location.getLongitude());
-                                MarkerOptions options=new MarkerOptions().position(latLng)
-                                        .title("I am there");
+                                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-                                googleMap.addMarker(options);
-
-
+                                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                    // TODO: Consider calling
+                                    //    ActivityCompat#requestPermissions
+                                    // here to request the missing permissions, and then overriding
+                                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                    //                                          int[] grantResults)
+                                    // to handle the case where the user grants the permission. See the documentation
+                                    // for ActivityCompat#requestPermissions for more details.
+                                    return;
+                                }
+                                googleMap.setMyLocationEnabled(true);
 
                             }
                         });
                     }
                 }
             });
-        }else {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
+        } else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
         }
-
-
 
         //search
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -106,7 +97,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
                     LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                     map.addMarker(new MarkerOptions().position(latLng).title(location));
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-
                 }
                 return false;
             }
@@ -118,53 +108,14 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
         });
         mapFragment.getMapAsync(this::onMapReady);
 
-        return view;
+        return rootView;
 
     }
-
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
-        map =googleMap;
-
-
+        map = googleMap;
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode==44){
-            if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                if (ActivityCompat.checkSelfPermission(getContext(),
-                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
-                    // getCurrentLocation
-                    Task<Location> task = client.getLastLocation();
-                    task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            if(location != null){
-
-                                mapFragment.getMapAsync(new OnMapReadyCallback() {
-                                    @Override
-                                    public void onMapReady(GoogleMap googleMap) {
-                                        LatLng latLng=new LatLng(location.getLatitude()
-                                                ,location.getLongitude());
-                                        MarkerOptions options=new MarkerOptions().position(latLng)
-                                                .title("I am there");
-                                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-                                        googleMap.addMarker(options);
-
-
-
-                                    }
-                                });
-                            }
-                        }
-                    });
-                }
-            }
-        }
-    }
 }

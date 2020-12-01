@@ -24,8 +24,6 @@ ChipNavigationBar chipNavigationBar;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
         chipNavigationBar = findViewById(R.id.bottom_nav_menu);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new HomeFragment()).commit();
 

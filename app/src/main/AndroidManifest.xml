@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.esprit.scluptfit">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,11 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ScluptFIT"
         android:usesCleartextTraffic="true">
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAuxCJro8AnPr5Q9i40M2GxNrMeATxUDes"/>
+        <activity android:name=".views.activities.RunningActivity"></activity>
 
-        <activity android:name=".views.activities.ExerciceActivity"></activity>
+        <activity android:name=".views.activities.ExerciceActivity" />
+
         <activity android:name=".views.activities.SignUpValideActivity" />
         <activity android:name=".views.activities.HomeActivity" />
         <activity android:name=".views.activities.SignUpActivity" />
@@ -30,6 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAuxCJro8AnPr5Q9i40M2GxNrMeATxUDes" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
