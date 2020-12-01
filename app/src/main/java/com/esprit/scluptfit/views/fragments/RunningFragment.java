@@ -68,7 +68,7 @@ public class RunningFragment extends Fragment implements OnMapReadyCallback {
                                 LatLng latLng=new LatLng(location.getLatitude()
                                         ,location.getLongitude());
                                 MarkerOptions options=new MarkerOptions().position(latLng)
-                                        .title("I am there");
+                                        .title("I am there!!!");
                                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                                 googleMap.addMarker(options);
 
