@@ -1,17 +1,17 @@
 package com.esprit.scluptfit.utils;
 
 public class LoginResponse {
-    private String message;
+    private String idUser;
 
-    public LoginResponse(String message) {
-        this.message = message;
+    public LoginResponse(String idUser) {
+        this.idUser = idUser;
     }
 
-    public String getMessage() {
-        return message;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 }

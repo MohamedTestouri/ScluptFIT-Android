@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
 
+import java.util.Calendar;
+
 public class HomeFragment extends Fragment implements SensorEventListener {
 
     private TextView stepsTextView;

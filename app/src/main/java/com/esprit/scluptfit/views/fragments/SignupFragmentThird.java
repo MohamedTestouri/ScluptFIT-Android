@@ -15,6 +15,8 @@ import com.esprit.scluptfit.services.UserService;
 import com.esprit.scluptfit.views.activities.SignUpValideActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.json.JSONException;
+
 public class SignupFragmentThird extends Fragment {
     private TextInputLayout weight;
     private TextInputLayout height;
@@ -33,7 +35,11 @@ public class SignupFragmentThird extends Fragment {
                 if (!validateTextInput(height) | !validateTextInput(weight)) {
                     return;
                 } else {
-                    userService.addHealthInformation();
+                    try {
+                        userService.addHealthInformation();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     startActivity(new Intent(getContext(), SignUpValideActivity.class));
                 }
             }
