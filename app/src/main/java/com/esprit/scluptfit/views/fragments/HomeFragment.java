@@ -1,6 +1,8 @@
 package com.esprit.scluptfit.views.fragments;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -15,8 +17,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements SensorEventListener {
 
@@ -30,6 +37,35 @@ public class HomeFragment extends Fragment implements SensorEventListener {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         stepsTextView = rootView.findViewById(R.id.stepsTextView);
         sensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
+
+        //chart
+        BarChart barChart= rootView.findViewById(R.id.barChart);
+        ArrayList<BarEntry> charts= new ArrayList<>();
+
+        charts.add(new BarEntry(2014,150));
+        charts.add(new BarEntry(2015,90));
+        charts.add(new BarEntry(2016,70));
+        charts.add(new BarEntry(2017,100));
+        charts.add(new BarEntry(2018,70));
+        charts.add(new BarEntry(2019,80));
+        charts.add(new BarEntry(2020,75));
+
+        BarDataSet barDataSet = new BarDataSet(charts,"charts");
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(16f);
+
+        BarData barData = new BarData(barDataSet);
+
+        barChart.setFitBars(true);
+        barChart.setData(barData);
+        barChart.getDescription().setText("Bar Chart Example");
+        barChart.animateY(2000);
+
+
+
+
+
         return rootView;
     }
 

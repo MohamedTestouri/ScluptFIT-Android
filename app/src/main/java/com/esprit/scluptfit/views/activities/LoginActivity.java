@@ -1,11 +1,13 @@
 package com.esprit.scluptfit.views.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.services.UserService;
+import com.esprit.scluptfit.views.fragments.ProfileFragment;
 import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,10 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button signupButton;
     private UserService userService = new UserService();
+
+    SharedPreferences sp;
+    Intent intent;
+    public final static String PREFS = "Settings";
 
 
     @Override
@@ -53,6 +59,12 @@ public class LoginActivity extends AppCompatActivity {
             return;
         } else {
             userService.Login(LoginActivity.this, email.getEditText().getText().toString(), password.getEditText().getText().toString());
+            /*sp.edit().putBoolean("isLogged",true).apply();
+            sp.edit().putString("mail", String.valueOf(email)).apply();
+            intent = new Intent(LoginActivity.this, ProfileFragment.class);
+            startActivity(intent);
+            finish();*/
+
         }
     }
 

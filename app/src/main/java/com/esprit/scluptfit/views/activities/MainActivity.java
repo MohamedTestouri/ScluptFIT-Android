@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
@@ -20,10 +21,20 @@ public class MainActivity extends AppCompatActivity {
     //variables
     Animation topAnim,bottomAnim;
     ImageView image;
-
+    Intent intent;
+    SharedPreferences sp;
+    public final static String PREFS = "Settings";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        sp = this.getSharedPreferences(PREFS,MODE_PRIVATE);
+        if(sp.contains("isLogged")){
+            intent = new Intent(MainActivity.this,HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
