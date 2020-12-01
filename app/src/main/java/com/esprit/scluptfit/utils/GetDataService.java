@@ -4,6 +4,9 @@ import com.esprit.scluptfit.entities.Exercice;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
 
+import org.json.JSONObject;
+import org.json.JSONStringer;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -15,6 +18,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface GetDataService {
     /* **** EXERCICES SERVICES **** */
@@ -37,10 +41,8 @@ public interface GetDataService {
     @GET("/users/find/{id}")
     Call<ArrayList<User>> getUserByIdUser(@Path("id") String idUser);
 
-
-    @Headers({"Accept: application/json"})
-    @PUT("/users/hi/{id}")
-    Call<User> addHealthInformation(@Path("id") String idUser, @Body ArrayList<User.HealthInformation> healthInformation);
+    @POST("/users/hi/{id}")
+    Call<User> addHealthInformation(@Path("id") String idUser, @Body JSONObject healthInformation);
 
     /* **** POSTS SERVICE **** */
     @GET("/posts")

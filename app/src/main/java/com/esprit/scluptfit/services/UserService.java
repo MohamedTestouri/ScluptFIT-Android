@@ -11,7 +11,12 @@ import com.esprit.scluptfit.utils.LoginResponse;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
 import com.esprit.scluptfit.views.activities.HomeActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONStringer;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +30,7 @@ public class UserService {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.body() != null) {
                     Log.d("RES_BODY", "NOT NULL");
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, response.body().getIdUser(), Toast.LENGTH_LONG).show();
                     context.startActivity(new Intent(context, HomeActivity.class));
                 } else {
                     Log.d("RES_BODY", "NULL");
@@ -45,6 +50,8 @@ public class UserService {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                Log.d("ID: ",response.body().getIdUser());
+
             }
 
             @Override
@@ -53,18 +60,22 @@ public class UserService {
         });
     }
 
-public void addHealthInformation() {
-        ArrayList<User.HealthInformation> healthInformationArrayList = new ArrayList<>();
-        User.HealthInformation healthInformation = new User.HealthInformation(25.2, 30.0);
-        healthInformationArrayList.add(healthInformation);
-        Call<User> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).addHealthInformation("5fb31113ae4613314cbcd860", healthInformationArrayList);
+    public void addHealthInformation() throws JSONException {
+
+        JSONObject object = new JSONObject();
+        JSONObject innerObject = new JSONObject();
+        innerObject.put("weight", 500);
+        innerObject.put("height", 58);
+        object.put("healthInformation", innerObject);
+
+        Call<User> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).addHealthInformation("5fb31113ae4613314cbcd860", object);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if(!response.isSuccessful()){
-                    Log.d("Health", "NOT OKAY" );
-                }else {
-                    Log.d("Health", "OKAY" );
+                if (!response.isSuccessful()) {
+                    Log.d("Health", "NOT OKAY");
+                } else {
+                    Log.d("Health", "OKAY");
                 }
             }
 
@@ -73,5 +84,5 @@ public void addHealthInformation() {
 
             }
         });
-}
+    }
 }
