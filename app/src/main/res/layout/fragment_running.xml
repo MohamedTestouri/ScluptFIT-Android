@@ -6,12 +6,12 @@
     tools:context=".views.fragments.RunningFragment"
     android:background="#E61978">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <fragment
+        android:id="@+id/google_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="running ..."
-        android:gravity="center"
-        android:textSize="30sp" />
+        />
+
 
 </FrameLayout>
