@@ -41,7 +41,8 @@ public class StartActivity extends AppCompatActivity {
     public void login(View view) {
 /*  Intent intent=new Intent(StartActivity.this,LoginActivity.class);
         startActivity(intent);*/
-        userService.addRun();
+        userService.addActivity();
+        userService.addHealthInformation();
         //postService.addComment();
 
     }

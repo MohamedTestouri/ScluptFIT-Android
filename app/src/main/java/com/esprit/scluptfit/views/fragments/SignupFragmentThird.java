@@ -35,11 +35,8 @@ public class SignupFragmentThird extends Fragment {
                 if (!validateTextInput(height) | !validateTextInput(weight)) {
                     return;
                 } else {
-                    try {
                         userService.addHealthInformation();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+
                     startActivity(new Intent(getContext(), SignUpValideActivity.class));
                 }
             }

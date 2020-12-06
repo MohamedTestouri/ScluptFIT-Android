@@ -108,7 +108,7 @@ public class UserService {
 
     public void addActivity() {
         Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
-                .addActivity("5fb31113ae4613314cbcd860", 20, "5fb2fce6a5a5f01e485444fa");
+                .addActivity("5fcaa6fe55106324acdfdfce", Double.parseDouble("22"), "5fb2fce6a5a5f01e485444fa");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -124,8 +124,9 @@ public class UserService {
 
     public void addHealthInformation() {
         Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
-                .addHealthInformation("5fb31113ae4613314cbcd860", Double.parseDouble("22"),
-                        55,
+                .addHealthInformation("5fcaa6fe55106324acdfdfce",
+                        Double.parseDouble("22"),
+                        Double.parseDouble("22"),
                         Double.parseDouble("22"),
                         Double.parseDouble("22"));
         call.enqueue(new Callback<ResponseBody>() {

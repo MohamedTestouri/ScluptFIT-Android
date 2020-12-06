@@ -47,7 +47,7 @@ public interface GetDataService {
     @POST("/users/hi/{idUser}&{calories}&{steps}&{weight}&{height}")
     Call<ResponseBody> addHealthInformation(@Path("idUser") String idUser,
                                             @Path("calories") Double calories,
-                                            @Path("steps") int steps,
+                                            @Path("steps") Double steps,
                                             @Path("weight") Double weight,
                                             @Path("height") Double height);
 
@@ -55,10 +55,10 @@ public interface GetDataService {
     Call<ResponseBody> addRun(@Path("idUser") String idUser, @Path("calories") Double calories, @Path("distance") Double distance,
                               @Path("duration") Double duration);
 
-    @POST("/users/activities/{idUser}&{sum}&{idExercice}")
+    @POST("/users/activities/{idUser}&{sum}&{categoryExercice}")
     Call<ResponseBody> addActivity(@Path("idUser") String idUser,
-                                   @Path("sum") int sum,
-                                   @Path("idExercice") String idExercice);
+                                   @Path("sum") Double sum,
+                                   @Path("categoryExercice") String categoryExercice);
 
     @DELETE("/users/{id}")
     Call<Void> deleteUser(@Path("id") String idUser);
