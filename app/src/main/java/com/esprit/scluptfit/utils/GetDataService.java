@@ -3,18 +3,24 @@ package com.esprit.scluptfit.utils;
 import com.esprit.scluptfit.entities.Exercice;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
+import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.util.ArrayList;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -53,4 +59,12 @@ public interface GetDataService {
 
     @GET("/posts/find/{idUser}")
     Call<ArrayList<Post>> getPostsByIdUser(@Path("idUser") String idUser);
+
+    @POST("/posts/comments/{idPost}")
+    Call<ResponseBody> addComment(@Path("idPost") String idPost, @Body JSONObject comment);
+  /*  @PATCH("/posts/comments/update/{idPost}&{idComment}")
+    Call<Post.Comment> updateComment(@Path("idPost") String idPost, @Path("idComment") String idComment);*/
+
+    @DELETE("/posts/{id}")
+    Call<Void> deletePost(@Path("id") String _id);
 }

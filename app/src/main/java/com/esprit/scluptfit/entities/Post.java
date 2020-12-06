@@ -1,18 +1,82 @@
 package com.esprit.scluptfit.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Post {
-
+    @SerializedName("_id")
     private String idPost;
+    @SerializedName("text")
     private String text;
+    @SerializedName("likes")
     private int likes;
+    @SerializedName("date")
     private Date date;
+    @SerializedName("image")
     private String image;
+    @SerializedName("idUser")
     private String idUser;
-
+    @SerializedName("comments")
     private ArrayList<Comment> CommentArrayList;
+
+    public static class Comment {
+        @SerializedName("_id")
+        private String idComment;
+        @SerializedName("text")
+        private String text;
+        @SerializedName("date")
+        private Date date;
+        @SerializedName("idUser")
+        private String idUser;
+
+
+        public Comment(String idComment, String text, Date date, String idUser) {
+            this.idComment = idComment;
+            this.text = text;
+            this.date = date;
+            this.idUser = idUser;
+
+        }
+
+        public Comment(String text, String idUser) {
+            this.text = text;
+            this.idUser = idUser;
+        }
+
+        public String getIdComment() {
+            return idComment;
+        }
+
+        public void setIdComment(String idComment) {
+            this.idComment = idComment;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public void setDate(Date date) {
+            this.date = date;
+        }
+
+        public String getIdUser() {
+            return idUser;
+        }
+
+        public void setIdUser(String idUser) {
+            this.idUser = idUser;
+        }
+    }
 
     public Post(String idPost, String text, int likes, Date date, String image, String idUser, ArrayList<Comment> commentArrayList) {
         this.idPost = idPost;
