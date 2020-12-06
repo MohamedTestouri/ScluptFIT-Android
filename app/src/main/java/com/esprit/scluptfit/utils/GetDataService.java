@@ -4,17 +4,12 @@ import com.esprit.scluptfit.entities.Exercice;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
