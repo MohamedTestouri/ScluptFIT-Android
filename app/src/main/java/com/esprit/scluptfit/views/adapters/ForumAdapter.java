@@ -1,6 +1,7 @@
 package com.esprit.scluptfit.views.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
+import com.esprit.scluptfit.services.PostService;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -22,10 +24,17 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHolder> {
     private Context context;
     private ArrayList<Post> postArrayList = new ArrayList<>();
+    private OnPostListener onPostListener;
+    PostService postService = new PostService();
 
-    public ForumAdapter(Context context, ArrayList<Post> postArrayList) {
+    public ForumAdapter(Context context, ArrayList<Post> postArrayList, OnPostListener onPostListener) {
         this.context = context;
         this.postArrayList = postArrayList;
+        this.onPostListener = onPostListener;
+    }
+
+    public void setOnPostListener(OnPostListener onPostListener) {
+        this.onPostListener = onPostListener;
     }
 
     @NonNull
@@ -33,7 +42,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
     public ForumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.list_posts, null);
-        return new ForumViewHolder(view);
+        return new ForumViewHolder(view, onPostListener);
     }
 
     @Override
@@ -46,7 +55,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
         holder.datePostTextView.setText(post.getIdUser());
         holder.datePostTextView.setText(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(post.getDate()));
         holder.textPostTextView.setText(post.getText());
-        holder.nbrlikeTextViwe.setText(""+post.getLikes());
+        holder.likesTextView.setText("" + post.getLikes());
        /* Picasso.get()
                 .load(post.getImage())
                 .fit().centerCrop()
@@ -66,20 +75,42 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
         private ImageView imagePostImageView;
         private RelativeLayout likeButton;
         private RelativeLayout commentButton;
-        private TextView nbrlikeTextViwe;
+        private TextView likesTextView;
 
+        OnPostListener onPostListener;
+        private Boolean clicked = false;
 
-
-        public ForumViewHolder(@NonNull View itemView) {
+        public ForumViewHolder(@NonNull View itemView, OnPostListener onPostListener) {
             super(itemView);
+            this.onPostListener = onPostListener;
             imageUserImageView = itemView.findViewById(R.id.img_profile);
             datePostTextView = itemView.findViewById(R.id.datePostTextView);
             nameUserTextView = itemView.findViewById(R.id.nameUserTextView);
             textPostTextView = itemView.findViewById(R.id.textPostTextView);
             imagePostImageView = itemView.findViewById(R.id.imagePostImageView);
-            nbrlikeTextViwe = itemView.findViewById(R.id.nbr_like);
+            likesTextView = itemView.findViewById(R.id.nbr_like);
             likeButton = itemView.findViewById(R.id.likeButton);
+            likeButton.setOnClickListener(l -> {
+                onPostListener.onLikePost(getAdapterPosition());
+                int oldLikes = postArrayList.get(getAdapterPosition()).getLikes();
+                if (!clicked) {
+                    likeButton.setBackgroundColor(Color.parseColor("#FFE30F39"));
+                    postArrayList.get(getAdapterPosition()).setLikes(oldLikes + 1);
+                    likesTextView.setText(String.valueOf(Integer.parseInt(likesTextView.getText().toString()) + 1));
+                    clicked = true;
+                } else {
+                    likeButton.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
+                    postArrayList.get(getAdapterPosition()).setLikes(oldLikes - 1);
+                    likesTextView.setText(String.valueOf(Integer.parseInt(likesTextView.getText().toString()) - 1));
+                    clicked = false;
+                }
+                postService.updatePostLikes(postArrayList.get(getAdapterPosition()).getIdPost(), new Post(postArrayList.get(getAdapterPosition()).getLikes()));
+            });
             commentButton = itemView.findViewById(R.id.commentButton);
         }
+    }
+
+    public interface OnPostListener {
+        void onLikePost(int position);
     }
 }

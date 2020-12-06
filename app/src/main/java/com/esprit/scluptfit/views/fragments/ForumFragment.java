@@ -27,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ForumFragment extends Fragment {
+public class ForumFragment extends Fragment implements ForumAdapter.OnPostListener {
     private RecyclerView postRecyclerView;
     private ForumAdapter forumAdapter;
     private ArrayList<Post> postArrayList = new ArrayList<>();
@@ -38,38 +38,31 @@ public class ForumFragment extends Fragment {
         View rootView;
         rootView = inflater.inflate(R.layout.fragment_forum, container, false);
 
-       /* postRecyclerView = rootView.findViewById(R.id.postRecyclerView);
-        postRecyclerView.setHasFixedSize(false); // no fix size
-        postRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        postArrayList.add(new Post("first status", 5));
-        postArrayList.add(new Post("second status", 207));
-
-        forumAdapter = new ForumAdapter(getContext(), postArrayList);
-        postRecyclerView.setAdapter(forumAdapter);*/
         GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
         Call<ArrayList<Post>> call = service.getAllPosts();
         call.enqueue(new Callback<ArrayList<Post>>() {
             @Override
             public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
                 postRecyclerView = rootView.findViewById(R.id.postRecyclerView);
-                forumAdapter = new ForumAdapter(getContext(), response.body());
+                forumAdapter = new ForumAdapter(getContext(), response.body(), ForumFragment.this::onLikePost);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                 postRecyclerView.setLayoutManager(layoutManager);
                 postRecyclerView.setAdapter(forumAdapter);
-
             }
 
             @Override
             public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
                 Toast.makeText(getContext(), "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-
             }
 
 
         });
-
         return rootView;
     }
 
 
+    @Override
+    public void onLikePost(int position) {
+        System.out.println("CLicKeD"+position        );
+    }
 }

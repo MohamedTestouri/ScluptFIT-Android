@@ -130,8 +130,8 @@ public class PostService {
         });
     }
 
-    public void updatePostLikes(Post post) {
-        Call<Post> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).updatePostLikes("5fccc79c1b1ffb0004db3d7e",post);
+    public void updatePostLikes(String idPost, Post post) {
+        Call<Post> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).updatePostLikes(idPost, post);
         call.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
