@@ -35,12 +35,17 @@ public interface GetDataService {
     @POST("/users/signup")
     Call<User> Signup(@Body User user);
 
+    @GET("/users/find/")
+    Call<ArrayList<User>> getAllUsers();
+
     @GET("/users/find/{id}")
-    Call<ArrayList<User>> getUserByIdUser(@Path("id") String idUser);
+    Call<User> getUserById(@Path("id") String idUser);
 
     @POST("/users/hi/{id}")
     Call<User> addHealthInformation(@Path("id") String idUser, @Body JSONObject healthInformation);
 
+    @DELETE("/users/{id]")
+    Call<Void> deleteUser(@Path("id") String idUser);
     /* **** POSTS SERVICE **** */
     @GET("/posts")
     Call<ArrayList<Post>> getAllPosts();
@@ -53,14 +58,12 @@ public interface GetDataService {
 
     @POST("/posts/comments/{idPost}")
     Call<ResponseBody> addComment(@Path("idPost") String idPost, @Body JSONObject comment);
-  /*  @PATCH("/posts/comments/update/{idPost}&{idComment}")
-    Call<Post.Comment> updateComment(@Path("idPost") String idPost, @Path("idComment") String idComment);*/
 
     @DELETE("/posts/{id}")
     Call<Void> deletePost(@Path("id") String _id);
 
     @POST("/posts")
-    Call<Post> postPost (@Body Post post);
+    Call<Post> addPost (@Body Post post);
 
     @PATCH("/posts/text/{id}")
     Call<Post> updatePostText(@Path("id") String idPost, @Body Post post);

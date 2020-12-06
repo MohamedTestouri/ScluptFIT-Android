@@ -23,6 +23,36 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserService {
+    public void  getAllUsers(){
+        Call<ArrayList<User>> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).getAllUsers();
+        call.enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getUserById(String idUser){
+        Call<User> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).getUserById(idUser);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+    }
+
     public void Login(Context context, String email, String password) {
         Call<LoginResponse> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).Login(new User(email, password));
         call.enqueue(new Callback<LoginResponse>() {
@@ -58,6 +88,21 @@ public class UserService {
             public void onFailure(Call<User> call, Throwable t) {
             }
         });
+    }
+
+    public void deleteUser(String idUser){
+    Call<Void> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).deleteUser(idUser);
+    call.enqueue(new Callback<Void>() {
+        @Override
+        public void onResponse(Call<Void> call, Response<Void> response) {
+
+        }
+
+        @Override
+        public void onFailure(Call<Void> call, Throwable t) {
+
+        }
+    });
     }
 
     public void addHealthInformation() throws JSONException {

@@ -115,8 +115,8 @@ public class PostService {
         });
     }
 
-    public void postPost(Post post) {
-        Call<Post> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).postPost(post);
+    public void addPost(Post post) {
+        Call<Post> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).addPost(post);
         call.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
