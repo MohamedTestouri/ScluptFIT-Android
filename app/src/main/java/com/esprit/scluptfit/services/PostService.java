@@ -1,15 +1,15 @@
 package com.esprit.scluptfit.services;
 
-import android.widget.Toast;
-
-import com.esprit.scluptfit.entities.Exercice;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.utils.GetDataService;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
-import com.esprit.scluptfit.views.activities.ExerciceActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
