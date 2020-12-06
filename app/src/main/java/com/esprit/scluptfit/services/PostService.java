@@ -54,35 +54,20 @@ public class PostService {
         });
     }
 
-    public void addComment() throws JSONException {
+    public void addComment() {
         Post.Comment comment = new Post.Comment("Hello World", "5fcaa6fe55106324acdfdfce");
-        JSONObject commentJsonObject = new JSONObject();
-        JSONObject jsonObject = new JSONObject();
 
-        commentJsonObject.put("text", "text");
-        commentJsonObject.put("idUser", "5fcaa6fe55106324acdfdfce");
-        System.out.println("Comment JsonObject: " + commentJsonObject.toString());
-        jsonObject.put("comments", commentJsonObject);
-        System.out.println("MOTHERFUCKER: " + jsonObject);
         Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
-                .addComment("5fccc79c1b1ffb0004db3d7e", jsonObject);
+                .addComment("5fccc79c1b1ffb0004db3d7e", comment.getText(), comment.getIdUser());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                String a = "";
-                if (response.isSuccessful()) {
-                    a = response.toString();
-                    System.out.println("GOOD:" + a);
-                } else {
-                    a = response.toString();
-                    System.out.println("Failed: " + a);
-                }
 
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                System.out.println("NOOOOOONE");
+
             }
         });
 

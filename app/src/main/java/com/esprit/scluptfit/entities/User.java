@@ -119,9 +119,9 @@ public class User {
         @SerializedName("distance")
         private Double distance;
         @SerializedName("duration")
-        private Date duration;
+        private Double duration;
 
-        public Run(String idRuns, Double calories, Double distance, Date duration) {
+        public Run(String idRuns, Double calories, Double distance, Double duration) {
             this.idRuns = idRuns;
             this.calories = calories;
             this.distance = distance;
@@ -158,11 +158,11 @@ public class User {
             this.distance = distance;
         }
 
-        public Date getDuration() {
+        public Double getDuration() {
             return duration;
         }
 
-        public void setDuration(Date duration) {
+        public void setDuration(Double duration) {
             this.duration = duration;
         }
     }

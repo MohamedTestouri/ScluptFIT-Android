@@ -12,6 +12,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
@@ -41,11 +44,25 @@ public interface GetDataService {
     @GET("/users/find/{id}")
     Call<User> getUserById(@Path("id") String idUser);
 
-    @POST("/users/hi/{id}")
-    Call<User> addHealthInformation(@Path("id") String idUser, @Body JSONObject healthInformation);
+    @POST("/users/hi/{idUser}&{calories}&{steps}&{weight}&{height}")
+    Call<ResponseBody> addHealthInformation(@Path("idUser") String idUser,
+                                            @Path("calories") Double calories,
+                                            @Path("steps") int steps,
+                                            @Path("weight") Double weight,
+                                            @Path("height") Double height);
 
-    @DELETE("/users/{id]")
+    @POST("/users/runs/{idUser}&{calories}&{distance}&{duration}")
+    Call<ResponseBody> addRun(@Path("idUser") String idUser, @Path("calories") Double calories, @Path("distance") Double distance,
+                              @Path("duration") Double duration);
+
+    @POST("/users/activities/{idUser}&{sum}&{idExercice}")
+    Call<ResponseBody> addActivity(@Path("idUser") String idUser,
+                                   @Path("sum") int sum,
+                                   @Path("idExercice") String idExercice);
+
+    @DELETE("/users/{id}")
     Call<Void> deleteUser(@Path("id") String idUser);
+
     /* **** POSTS SERVICE **** */
     @GET("/posts")
     Call<ArrayList<Post>> getAllPosts();
@@ -56,14 +73,16 @@ public interface GetDataService {
     @GET("/posts/find/{idUser}")
     Call<ArrayList<Post>> getPostsByIdUser(@Path("idUser") String idUser);
 
-    @POST("/posts/comments/{idPost}")
-    Call<ResponseBody> addComment(@Path("idPost") String idPost, @Body JSONObject comment);
+    @POST("/posts/comments/{idPost}&{text}&{idUser}")
+    Call<ResponseBody> addComment(@Path("idPost") String idPost,
+                                  @Path("text") String text,
+                                  @Path("idUser") String idUser);
 
     @DELETE("/posts/{id}")
     Call<Void> deletePost(@Path("id") String _id);
 
     @POST("/posts")
-    Call<Post> addPost (@Body Post post);
+    Call<Post> addPost(@Body Post post);
 
     @PATCH("/posts/text/{id}")
     Call<Post> updatePostText(@Path("id") String idPost, @Body Post post);

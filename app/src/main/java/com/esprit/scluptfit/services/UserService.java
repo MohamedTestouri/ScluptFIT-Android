@@ -18,12 +18,13 @@ import org.json.JSONStringer;
 import java.util.ArrayList;
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserService {
-    public void  getAllUsers(){
+    public void getAllUsers() {
         Call<ArrayList<User>> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).getAllUsers();
         call.enqueue(new Callback<ArrayList<User>>() {
             @Override
@@ -38,7 +39,7 @@ public class UserService {
         });
     }
 
-    public void getUserById(String idUser){
+    public void getUserById(String idUser) {
         Call<User> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).getUserById(idUser);
         call.enqueue(new Callback<User>() {
             @Override
@@ -80,7 +81,7 @@ public class UserService {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Log.d("ID: ",response.body().getIdUser());
+                Log.d("ID: ", response.body().getIdUser());
 
             }
 
@@ -90,42 +91,67 @@ public class UserService {
         });
     }
 
-    public void deleteUser(String idUser){
-    Call<Void> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).deleteUser(idUser);
-    call.enqueue(new Callback<Void>() {
-        @Override
-        public void onResponse(Call<Void> call, Response<Void> response) {
-
-        }
-
-        @Override
-        public void onFailure(Call<Void> call, Throwable t) {
-
-        }
-    });
-    }
-
-    public void addHealthInformation() throws JSONException {
-
-        JSONObject object = new JSONObject();
-        JSONObject innerObject = new JSONObject();
-        innerObject.put("weight", 500);
-        innerObject.put("height", 58);
-        object.put("healthInformation", innerObject);
-
-        Call<User> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).addHealthInformation("5fb31113ae4613314cbcd860", object);
-        call.enqueue(new Callback<User>() {
+    public void deleteUser(String idUser) {
+        Call<Void> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).deleteUser(idUser);
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (!response.isSuccessful()) {
-                    Log.d("Health", "NOT OKAY");
-                } else {
-                    Log.d("Health", "OKAY");
-                }
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void addActivity() {
+        Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
+                .addActivity("5fb31113ae4613314cbcd860", 20, "5fb2fce6a5a5f01e485444fa");
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void addHealthInformation() {
+        Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
+                .addHealthInformation("5fb31113ae4613314cbcd860", Double.parseDouble("22"),
+                        55,
+                        Double.parseDouble("22"),
+                        Double.parseDouble("22"));
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void addRun() {
+        Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
+                .addRun("5fcaa6fe55106324acdfdfce", Double.parseDouble("22"), Double.parseDouble("22"), Double.parseDouble("22"));
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
 
             }
         });

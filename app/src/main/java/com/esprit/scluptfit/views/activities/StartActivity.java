@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.services.PostService;
+import com.esprit.scluptfit.services.UserService;
 
 import org.json.JSONException;
 
@@ -21,6 +22,7 @@ public class StartActivity extends AppCompatActivity {
     private Button signupButton;
     TextView slogan1,slogan3;
     PostService postService = new PostService();
+    UserService userService = new UserService();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +38,11 @@ public class StartActivity extends AppCompatActivity {
         signupButton.setOnClickListener(l->{signup();});
     }
 
-    public void login(View view) throws JSONException {
+    public void login(View view) {
 /*  Intent intent=new Intent(StartActivity.this,LoginActivity.class);
         startActivity(intent);*/
-        postService.addComment();
+        userService.addRun();
+        //postService.addComment();
 
     }
 

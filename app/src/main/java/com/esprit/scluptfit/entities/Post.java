@@ -21,6 +21,8 @@ public class Post {
     @SerializedName("comments")
     private ArrayList<Comment> CommentArrayList;
 
+
+
     public static class Comment {
         @SerializedName("_id")
         private String idComment;
