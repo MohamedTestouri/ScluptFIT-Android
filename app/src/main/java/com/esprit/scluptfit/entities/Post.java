@@ -103,6 +103,13 @@ public class Post {
         this.text = text;
         this.likes = likes;
     }
+    public Post(String text) {
+        this.text = text;
+
+    }
+    public Post( int likes) {
+        this.likes = likes;
+    }
 
     public String getIdPost() {
         return idPost;

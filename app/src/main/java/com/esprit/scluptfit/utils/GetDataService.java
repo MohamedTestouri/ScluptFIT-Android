@@ -3,24 +3,18 @@ package com.esprit.scluptfit.utils;
 import com.esprit.scluptfit.entities.Exercice;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
-import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.util.ArrayList;
 
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -67,4 +61,15 @@ public interface GetDataService {
 
     @DELETE("/posts/{id}")
     Call<Void> deletePost(@Path("id") String _id);
+
+    @POST("/posts")
+    Call<Post> postPost (@Body Post post);
+
+    @PATCH("/posts/text/{id}")
+    Call<Post> updatePostText(@Path("id") String idPost, @Body Post post);
+
+    @PATCH("/posts/likes/{id}")
+    Call<Post> updatePostLikes(@Path("id") String idPost, @Body Post post);
+
+
 }
