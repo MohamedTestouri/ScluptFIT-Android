@@ -40,9 +40,9 @@ ChipNavigationBar chipNavigationBar;
                     case R.id.home:
                         fragment=new HomeFragment();
                         break;
-                    case R.id.location:
+                   /* case R.id.location:
                         fragment=new LocationFragment();
-                        break;
+                        break;*/
                     case R.id.fitness:
                         fragment=new ExerciceFragement();
                         break;
