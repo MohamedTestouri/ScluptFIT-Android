@@ -123,8 +123,7 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
                 map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("End Position"));
                 stopChronometer();
                 distanceTextView.setText(CalculationByDistance(latLng, endPosition));
-                double a = calculateDuration();
-                System.out.println("Duration: "+a);
+calculateDuration();
                 /*userService.addRun("5fcaa6fe55106324acdfdfce", new User.Run(0.0,
                         Double.parseDouble(distanceTextView.getText().toString()),
                        Double.parseDouble(duration)
@@ -180,13 +179,13 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
 
         return newFormat.format(valueResult) + " KM";
     }
-    public Double calculateDuration(){
+    public void calculateDuration(){
         String time = chronometer.getText().toString();
      String hours = time.substring(0, 2);
      String minutes = time.substring(3, 1);
      String seconds = time.substring(6, 2);
+        System.out.println("hours: "+hours+" minutes: "+minutes+" seconds: "+seconds);
 
-        return 0.1;
     }
 
 }
