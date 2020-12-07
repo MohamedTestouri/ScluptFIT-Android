@@ -227,7 +227,7 @@
                         android:weightSum="2"
                         android:padding="10dp">
 
-                        <com.github.mikephil.charting.charts.BarChart
+                        <com.github.mikephil.charting.charts.LineChart
                             android:id="@+id/barChart"
                             android:layout_height="300dp"
                             android:layout_width="match_parent"/>

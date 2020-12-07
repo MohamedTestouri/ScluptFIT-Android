@@ -1,15 +1,20 @@
 package com.esprit.scluptfit.views.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.utils.GetDataService;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
+import com.esprit.scluptfit.views.activities.CommentActivity;
+import com.esprit.scluptfit.views.activities.HomeActivity;
+import com.esprit.scluptfit.views.activities.StartActivity;
 import com.esprit.scluptfit.views.adapters.ForumAdapter;
 
 import java.util.ArrayList;
@@ -34,6 +39,7 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
         View rootView;
         rootView = inflater.inflate(R.layout.fragment_forum, container, false);
 
+
         RetrofitClientInstance.getRetrofitInstance().
                 create(GetDataService.class)
                 .getAllPosts()
@@ -54,6 +60,8 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
 
 
                 });
+
+
         return rootView;
     }
 

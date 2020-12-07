@@ -28,7 +28,7 @@ public class PostService {
         });
     }
 
-    public void getPostsById(String idPost) {
+   /* public void getPostsById(String idPost) {
         Call<ArrayList<Post>> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).getPostsById(idPost);
         call.enqueue(new Callback<ArrayList<Post>>() {
             @Override
@@ -39,7 +39,7 @@ public class PostService {
             public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
             }
         });
-    }
+    }*/
 
     public void getPostsByIdUser(String idUser) {
         Call<ArrayList<Post>> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class).getPostsByIdUser(idUser);
@@ -54,11 +54,11 @@ public class PostService {
         });
     }
 
-    public void addComment() {
-        Post.Comment comment = new Post.Comment("Hello World", "5fcaa6fe55106324acdfdfce");
+    public void addComment(String text,String idUser,String idPost) {
+        Post.Comment comment = new Post.Comment(text, idUser);
 
         Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
-                .addComment("5fccc79c1b1ffb0004db3d7e", comment.getText(), comment.getIdUser());
+                .addComment(idPost, comment.getText(), comment.getIdUser());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -1,6 +1,7 @@
 package com.esprit.scluptfit.views.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.services.PostService;
+import com.esprit.scluptfit.views.activities.CommentActivity;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHolder> {
     private Context context;
@@ -107,6 +111,10 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
                 postService.updatePostLikes(postArrayList.get(getAdapterPosition()).getIdPost(), new Post(postArrayList.get(getAdapterPosition()).getLikes()));
             });
             commentButton = itemView.findViewById(R.id.commentButton);
+            commentButton.setOnClickListener(l -> {
+                Intent intent=new Intent(l.getContext(),CommentActivity.class);
+                l.getContext().startActivity(intent);
+            });
         }
     }
 

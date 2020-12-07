@@ -63,7 +63,7 @@ public interface GetDataService {
     Call<ArrayList<Post>> getAllPosts();
 
     @GET("/posts/{id}")
-    Call<ArrayList<Post>> getPostsById(@Path("id") String _id);
+    Call<Post> getPostsById(@Path("id") String _id);
 
     @GET("/posts/find/{idUser}")
     Call<ArrayList<Post>> getPostsByIdUser(@Path("idUser") String idUser);
