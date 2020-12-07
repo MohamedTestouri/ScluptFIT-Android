@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -111,12 +112,13 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
                 PolylineOptions lineOptions = new PolylineOptions()
                         .add(latLng)
                         .add(endPosition)
-                        .color(R.color.primaryColor)
-                        .width(5);
+                        .width(5)
+                        .color(Color.parseColor("#FFE30F39"));
                 map.addPolyline(lineOptions);
                 map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("End Position"));
                 stopChronometer();
                distanceTextView.setText(CalculationByDistance(latLng, endPosition));
+
 
             });
         } else {

@@ -23,34 +23,22 @@
                 android:padding="20dp">
 
                 <ImageView
-                    android:id="@+id/profile_image"
+                    android:id="@+id/profileImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/profile1" />
 
                 <TextView
-                    android:id="@+id/full_name"
+                    android:id="@+id/fullNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/profile_image"
+                    android:layout_toEndOf="@+id/profileImage"
                     android:fontFamily="@font/bangers"
-                    android:includeFontPadding="false"
                     android:text="Wassim Sefi"
                     android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/addres_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/full_name"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/profile_image"
-                    android:includeFontPadding="false"
-                    android:text="Wassim_Sefi !"
-                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -80,22 +68,22 @@
                             android:src="@drawable/booking" />
 
                         <TextView
-                            android:id="@+id/taille_label"
+                            android:id="@+id/stepsTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:fontFamily="@font/bangers"
                             android:includeFontPadding="false"
-                            android:text="82 m"
+                            android:text="82"
                             android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/taille_desc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/taille_label"
+                            android:layout_below="@+id/stepsTextView"
                             android:layout_centerInParent="true"
-                            android:text="Taille"
+                            android:text="Steps"
                             android:textSize="20sp" />
 
                     </RelativeLayout>
@@ -122,7 +110,7 @@
                             android:src="@drawable/booking" />
 
                         <TextView
-                            android:id="@+id/calorie_label"
+                            android:id="@+id/caloriesTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -132,10 +120,10 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/calorie_desc"
+                            android:id="@+id/caloriesLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/calorie_label"
+                            android:layout_below="@+id/caloriesTextView"
                             android:layout_centerInParent="true"
                             android:text="Calories"
                             android:textSize="20sp" />
@@ -164,7 +152,7 @@
                             android:src="@drawable/booking" />
 
                         <TextView
-                            android:id="@+id/poid_label"
+                            android:id="@+id/weightTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -174,10 +162,10 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/poid_desc"
+                            android:id="@+id/weightLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/poid_label"
+                            android:layout_below="@+id/weightTextView"
                             android:layout_centerInParent="true"
                             android:text="Poid"
                             android:textSize="20sp" />
@@ -194,78 +182,12 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/myPostsRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Full Name">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@android:drawable/star_big_on"
-                        android:drawablePadding="10dp"
-                        android:text="Wassim Sefi" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="E-Mail">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@android:drawable/ic_dialog_email"
-                        android:drawablePadding="10dp"
-                        android:text="wassim@gmail.com" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Phone Number">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@android:drawable/stat_sys_phone_call_forward"
-                        android:drawablePadding="10dp"
-                        android:text="+219 281058016" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Password">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@android:drawable/ic_menu_send"
-                        android:drawablePadding="10dp"
-                        android:text="aaaaa1452" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fece2f"
-                    android:fontFamily="@font/bangers"
-                    android:text="Update"
-                    android:onClick="update">
-
-                </Button>
-
-
+                    android:layout_height="match_parent" />
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

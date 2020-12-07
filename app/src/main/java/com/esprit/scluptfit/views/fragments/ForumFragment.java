@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
-import com.esprit.scluptfit.entities.Exercice;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.utils.GetDataService;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
-import com.esprit.scluptfit.views.activities.ExerciceActivity;
-import com.esprit.scluptfit.views.adapters.ExerciceAdapter;
 import com.esprit.scluptfit.views.adapters.ForumAdapter;
 
 import java.util.ArrayList;
@@ -22,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
