@@ -26,7 +26,7 @@ ChipNavigationBar chipNavigationBar;
         setContentView(R.layout.activity_home);
         chipNavigationBar = findViewById(R.id.bottom_nav_menu);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new HomeFragment()).commit();
-
+chipNavigationBar.setItemSelected(R.id.home, true);
         bottomMenu();
     }
 
