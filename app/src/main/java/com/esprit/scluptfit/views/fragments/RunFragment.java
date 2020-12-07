@@ -17,6 +17,8 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.entities.User;
+import com.esprit.scluptfit.services.UserService;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -46,6 +48,8 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
     private boolean running;
     private TextView distanceTextView;
 
+    UserService userService = new UserService();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -62,6 +66,7 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 long time = SystemClock.elapsedRealtime() - chronometer.getBase();
+                System.out.println(time);
                 int h = (int) (time / 3600000);
                 int m = (int) (time - h * 3600000) / 60000;
                 int s = (int) (time - h * 3600000 - m * 60000) / 1000;
@@ -117,8 +122,14 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
                 map.addPolyline(lineOptions);
                 map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("End Position"));
                 stopChronometer();
-               distanceTextView.setText(CalculationByDistance(latLng, endPosition));
-
+                distanceTextView.setText(CalculationByDistance(latLng, endPosition));
+                double a = calculateDuration();
+                System.out.println("Duration: "+a);
+                /*userService.addRun("5fcaa6fe55106324acdfdfce", new User.Run(0.0,
+                        Double.parseDouble(distanceTextView.getText().toString()),
+                       Double.parseDouble(duration)
+                        )
+                );*/
 
             });
         } else {
@@ -164,10 +175,18 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
                 * Math.sin(dLon / 2);
         double c = 2 * Math.asin(Math.sqrt(a));
         double valueResult = Radius * c;
-       double km = valueResult / 1;
+        double km = valueResult / 1;
         DecimalFormat newFormat = new DecimalFormat("###.###");
 
-        return newFormat.format(valueResult)+" KM";
+        return newFormat.format(valueResult) + " KM";
+    }
+    public Double calculateDuration(){
+        String time = chronometer.getText().toString();
+     String hours = time.substring(0, 2);
+     String minutes = time.substring(3, 1);
+     String seconds = time.substring(6, 2);
+
+        return 0.1;
     }
 
 }

@@ -142,19 +142,20 @@ public class UserService {
         });
     }
 
-    public void addRun() {
-        Call<ResponseBody> call = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
-                .addRun("5fcaa6fe55106324acdfdfce", Double.parseDouble("22"), Double.parseDouble("22"), Double.parseDouble("22"));
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+    public void addRun(String idUser, User.Run run) {
+        RetrofitClientInstance.getRetrofitInstance()
+                .create(GetDataService.class)
+                .addRun(idUser, run.getCalories(), run.getDistance(), run.getDuration())
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-            }
+                    }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
 
-            }
-        });
+                    }
+                });
     }
 }
