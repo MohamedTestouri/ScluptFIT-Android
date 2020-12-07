@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment implements SensorEventListener {
 
         chart2.add(new Entry(0,120));
         chart2.add(new Entry(1,100));
-        chart2.add(new Entry(2,80));
+        chart2.add(new Entry(2,82));
         chart2.add(new Entry(3,90));
         chart2.add(new Entry(4,100));
         chart2.add(new Entry(5,70));
