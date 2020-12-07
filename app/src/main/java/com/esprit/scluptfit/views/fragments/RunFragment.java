@@ -1,10 +1,12 @@
 package com.esprit.scluptfit.views.fragments;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.icu.number.Precision;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -31,6 +33,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.text.DecimalFormat;
+import java.time.Duration;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -49,7 +52,9 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
     private TextView distanceTextView;
 
     UserService userService = new UserService();
+    DecimalFormat format = new DecimalFormat("0.000");
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -122,14 +127,12 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
                 map.addPolyline(lineOptions);
                 map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("End Position"));
                 stopChronometer();
-                distanceTextView.setText(CalculationByDistance(latLng, endPosition));
-calculateDuration();
-                /*userService.addRun("5fcaa6fe55106324acdfdfce", new User.Run(0.0,
-                        Double.parseDouble(distanceTextView.getText().toString()),
-                       Double.parseDouble(duration)
-                        )
-                );*/
-
+                double time = (double) (SystemClock.elapsedRealtime() - chronometer.getBase()) / 60000;
+                double duration = Double.valueOf(format.format(time));
+                double distance = Double.valueOf(format.format(CalculationByDistance(latLng, endPosition)));
+                userService.addRun("5fcaa72555106324acdfdfcf", new User.Run(10.0, distance, duration));
+                distanceTextView.setText(distance + " KM");
+                getActivity().finish();
             });
         } else {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
@@ -160,7 +163,7 @@ calculateDuration();
         }
     }
 
-    public String CalculationByDistance(LatLng StartP, LatLng EndP) {
+    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
         int Radius = 6371;// radius of earth in Km
         double lat1 = StartP.latitude;
         double lat2 = EndP.latitude;
@@ -174,18 +177,8 @@ calculateDuration();
                 * Math.sin(dLon / 2);
         double c = 2 * Math.asin(Math.sqrt(a));
         double valueResult = Radius * c;
-        double km = valueResult / 1;
-        DecimalFormat newFormat = new DecimalFormat("###.###");
-
-        return newFormat.format(valueResult) + " KM";
+        return valueResult;
     }
-    public void calculateDuration(){
-        String time = chronometer.getText().toString();
-     String hours = time.substring(0, 2);
-     String minutes = time.substring(3, 1);
-     String seconds = time.substring(6, 2);
-        System.out.println("hours: "+hours+" minutes: "+minutes+" seconds: "+seconds);
 
-    }
 
 }

@@ -48,8 +48,8 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
                     public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
                         postRecyclerView = rootView.findViewById(R.id.postRecyclerView);
                         forumAdapter = new ForumAdapter(getContext(), response.body(), ForumFragment.this::onLikePost);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                        postRecyclerView.setLayoutManager(layoutManager);
+
+                        postRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         postRecyclerView.setAdapter(forumAdapter);
                     }
 
