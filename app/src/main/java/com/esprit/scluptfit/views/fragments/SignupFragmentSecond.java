@@ -52,7 +52,7 @@ public class SignupFragmentSecond extends Fragment {
                         Date birthday = new SimpleDateFormat("yyyy-MM-dd").parse(getArguments().getString("birthday"));
                         String gender = getArguments().getString("gender");
                         User user = new User(fullName, phone, birthday, gender, password.getEditText().getText().toString(), email.getEditText().getText().toString());
-                        userService.Signup(user);
+                        userService.Signup(getContext(), user);
                         showFragment("5fbc3f70fe7d384680a9f1fe");
                     } catch (ParseException e) {
                         e.printStackTrace();

@@ -130,7 +130,7 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
                 double time = (double) (SystemClock.elapsedRealtime() - chronometer.getBase()) / 60000;
                 double duration = Double.valueOf(format.format(time));
                 double distance = Double.valueOf(format.format(CalculationByDistance(latLng, endPosition)));
-                userService.addRun("5fcaa72555106324acdfdfcf", new User.Run(10.0, distance, duration));
+                userService.addRun( getContext(), new User.Run(10.0, distance, duration));
                 distanceTextView.setText(distance + " KM");
                 getActivity().finish();
             });

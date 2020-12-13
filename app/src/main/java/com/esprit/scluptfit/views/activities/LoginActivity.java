@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
+import com.esprit.scluptfit.entities.User;
 import com.esprit.scluptfit.services.PostService;
 import com.esprit.scluptfit.services.UserService;
 import com.esprit.scluptfit.views.fragments.ProfileFragment;
@@ -65,29 +66,11 @@ public class LoginActivity extends AppCompatActivity {
       if (!validateTextInput(email) | !validateTextInput(password)) {
             return;
         } else {
-           userService.Login(LoginActivity.this, email.getEditText().getText().toString(), password.getEditText().getText().toString());
-           /* sp.edit().putBoolean("isLogged",true).apply();
-            sp.edit().putString("mail", String.valueOf(email)).apply();
-            intent = new Intent(LoginActivity.this, ProfileFragment.class);
-            startActivity(intent);
-            finish();*/
+          System.out.println("Email: "+email.getEditText().getText());
+          System.out.println("Password :"+password.getEditText().getText());
+          User user = new User(email.getEditText().getText().toString(), password.getEditText().getText().toString());
+           userService.Login(LoginActivity.this, user);
 
-          /*
-          **post a post
-          Post post=new Post("new post hhhhh",102);
-          postService.postPost(post);
-          Toast.makeText(getApplicationContext(), "Add post ....", Toast.LENGTH_LONG).show();*/
-
-
-          /*
-          Post post = new Post("hello ....");
-          postService.updatePostText(post);
-          Toast.makeText(getApplicationContext(), "update post ....", Toast.LENGTH_LONG).show();*/
-
-          /*
-          Post post = new Post(1919);
-          postService.updatePostLikes(post);
-          Toast.makeText(getApplicationContext(), "update post ....", Toast.LENGTH_LONG).show();*/
 
       }
     }

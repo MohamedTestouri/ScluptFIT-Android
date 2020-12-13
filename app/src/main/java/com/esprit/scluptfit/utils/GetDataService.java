@@ -28,7 +28,7 @@ public interface GetDataService {
 
     /* **** USERS SERVICES **** */
     @POST("/users/login")
-    Call<LoginResponse> Login(@Body User user);
+    Call<User> Login(@Body User user);
 
     @POST("/users/signup")
     Call<User> Signup(@Body User user);
@@ -40,7 +40,7 @@ public interface GetDataService {
     Call<User> getUserById(@Path("id") String idUser);
 
     @POST("/users/hi/{idUser}&{calories}&{steps}&{weight}&{height}")
-    Call<ResponseBody> addHealthInformation(@Path("idUser") String idUser,
+    Call<Void> addHealthInformation(@Path("idUser") String idUser,
                                             @Path("calories") Double calories,
                                             @Path("steps") Double steps,
                                             @Path("weight") Double weight,

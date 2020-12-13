@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.esprit.scluptfit.R;
+import com.esprit.scluptfit.entities.User;
 import com.esprit.scluptfit.services.UserService;
 import com.esprit.scluptfit.views.activities.SignUpValideActivity;
 import com.google.android.material.textfield.TextInputLayout;
@@ -35,7 +36,10 @@ public class SignupFragmentThird extends Fragment {
                 if (!validateTextInput(height) | !validateTextInput(weight)) {
                     return;
                 } else {
-                        userService.addHealthInformation();
+                    double weightInformation = Double.valueOf(weight.getEditText().getText().toString());
+                    double heightInformation = Double.valueOf(height.getEditText().getText().toString());
+                    User.HealthInformation healthInformation = new User.HealthInformation(0.0, weightInformation, heightInformation, 0);
+                    userService.addHealthInformation(getContext(), healthInformation);
 
                     startActivity(new Intent(getContext(), SignUpValideActivity.class));
                 }

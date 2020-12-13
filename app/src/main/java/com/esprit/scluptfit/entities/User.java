@@ -243,9 +243,9 @@ public class User {
         this.email = email;
     }
 
-    public User(String password, String email) {
-        this.password = password;
+    public User( String email, String password) {
         this.email = email;
+        this.password = password;
     }
 
     public String getIdUser() {

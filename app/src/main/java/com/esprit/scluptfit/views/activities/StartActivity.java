@@ -3,6 +3,7 @@ package com.esprit.scluptfit.views.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,10 +18,13 @@ import com.esprit.scluptfit.services.UserService;
 
 import org.json.JSONException;
 
+import static com.esprit.scluptfit.services.UserService.sharedPrefFile;
+
 public class StartActivity extends AppCompatActivity {
     Animation topAnim,bottomAnim;
     private Button signupButton;
     TextView slogan1,slogan3;
+    private SharedPreferences sharedPreferences;
     PostService postService = new PostService();
     UserService userService = new UserService();
     @Override
@@ -36,19 +40,21 @@ public class StartActivity extends AppCompatActivity {
         slogan3.setAnimation(topAnim);
         signupButton = findViewById(R.id.signupButton);
         signupButton.setOnClickListener(l->{signup();});
+        sharedPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        if (sharedPreferences.contains("currentUser"))
+        {
+            startActivity(new Intent(StartActivity.this, HomeActivity.class));
+        }
     }
 
     public void login(View view) {
-/*  Intent intent=new Intent(StartActivity.this,LoginActivity.class);
-        startActivity(intent);*/
-        userService.addActivity();
-        userService.addHealthInformation();
-        //postService.addComment();
+ Intent intent=new Intent(StartActivity.this,LoginActivity.class);
+        startActivity(intent);
 
     }
 
     public void signup() {
-        Intent intent=new Intent(StartActivity.this, HomeActivity.class);
+        Intent intent=new Intent(StartActivity.this, SignUpActivity.class);
         startActivity(intent);
 
     }

@@ -16,24 +16,16 @@ import android.widget.ImageView;
 
 import com.esprit.scluptfit.R;
 
+import static com.esprit.scluptfit.services.UserService.sharedPrefFile;
+
 public class MainActivity extends AppCompatActivity {
     private static  int SPLASH_SCREEN = 5000;
     //variables
     Animation topAnim,bottomAnim;
     ImageView image;
-    Intent intent;
-    SharedPreferences sp;
-    public final static String PREFS = "Settings";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        sp = this.getSharedPreferences(PREFS,MODE_PRIVATE);
-        if(sp.contains("isLogged")){
-            intent = new Intent(MainActivity.this,HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -46,12 +38,15 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, StartActivity.class);
-                Pair[] pairs=new Pair[1];
-                pairs[0]=new Pair<View,String>(image,"logo_image");
-                ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-                startActivity(intent,options.toBundle());
+
+                    Intent intent = new Intent(MainActivity.this, StartActivity.class);
+                    Pair[] pairs=new Pair[1];
+                    pairs[0]=new Pair<View,String>(image,"logo_image");
+                    ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+                    startActivity(intent,options.toBundle());
+
                 finish();
+
             }
         },SPLASH_SCREEN) ;
 

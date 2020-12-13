@@ -1,18 +1,23 @@
 package com.esprit.scluptfit.views.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
+import com.esprit.scluptfit.services.UserService;
 import com.esprit.scluptfit.utils.GetDataService;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
+import com.esprit.scluptfit.views.activities.StartActivity;
 import com.esprit.scluptfit.views.adapters.ForumAdapter;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -23,11 +28,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.esprit.scluptfit.services.UserService.sharedPrefFile;
+
 
 public class ProfileFragment extends Fragment implements ForumAdapter.OnPostListener {
-
-    private SharedPreferences sharedPreferences;
-
     private RecyclerView myPostsRecyclerView;
     private ForumAdapter forumAdapter;
     private ArrayList<Post> postArrayList = new ArrayList<>();
@@ -36,9 +41,9 @@ public class ProfileFragment extends Fragment implements ForumAdapter.OnPostList
     private TextView caloriesTextView;
     private TextView weightTextView;
     private TextView fullNameTextView;
+    private Button logoutButton;
+    UserService userService = new UserService();
 
-    private static final String PREFS = "Settings";
-    private String idUser = "5fcaa6fe55106324acdfdfce";
 
 
     @Override
@@ -46,37 +51,46 @@ public class ProfileFragment extends Fragment implements ForumAdapter.OnPostList
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        logoutButton = rootView.findViewById(R.id.logoutButton);
         fullNameTextView = rootView.findViewById(R.id.fullNameTextView);
         stepsTextView = rootView.findViewById(R.id.stepsTextView);
         caloriesTextView = rootView.findViewById(R.id.caloriesTextView);
         weightTextView = rootView.findViewById(R.id.weightTextView);
         myPostsRecyclerView = rootView.findViewById(R.id.myPostsRecyclerView);
 
-        RetrofitClientInstance.getRetrofitInstance()
-                .create(GetDataService.class)
-                .getUserById(idUser)
-                .enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
-                    int lastHealthInformation = response.body().getHealthInformation().size() - 1;
-                    User.HealthInformation healthInformation = response.body().getHealthInformation().get(lastHealthInformation);
-                    fullNameTextView.setText(response.body().getFullName());
-                    stepsTextView.setText("" + healthInformation.getSteps());
-                    caloriesTextView.setText("" + healthInformation.getCalories());
-                    weightTextView.setText("" + healthInformation.getWeight());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
-            }
+        logoutButton.setOnClickListener(l -> {
+            userService.logout(getContext());
+            getActivity().finish();
+            startActivity(new Intent(getActivity(), StartActivity.class));
         });
+       // displayUser();
 
-        RetrofitClientInstance.getRetrofitInstance()
+        //User loggedUser  = userService.getUserById(getContext());
+       /* RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
-                .getPostsByIdUser("5fb3109cbb971938a473450e")
+                .getUserById("currentUser.getIdUser()")
+                .enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful()) {
+                            int lastHealthInformation = response.body().getHealthInformation().size() - 1;
+                            User.HealthInformation healthInformation = response.body().getHealthInformation().get(lastHealthInformation);
+                            fullNameTextView.setText(response.body().getFullName());
+                            stepsTextView.setText("" + healthInformation.getSteps());
+                            caloriesTextView.setText("" + healthInformation.getCalories());
+                            weightTextView.setText("" + healthInformation.getWeight());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+
+                    }
+                });*/
+
+        /*RetrofitClientInstance.getRetrofitInstance()
+                .create(GetDataService.class)
+                .getPostsByIdUser(loggedUser.getIdUser())
                 .enqueue(new Callback<ArrayList<Post>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
@@ -90,10 +104,21 @@ public class ProfileFragment extends Fragment implements ForumAdapter.OnPostList
                     public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
 
                     }
-                });
+                });*/
         return rootView;
 
     }
+
+    private void displayUser() {
+        User loggedUser  = userService.getUserById(getContext());
+        int lastHealthInformation = loggedUser.getHealthInformation().size() - 1;
+        User.HealthInformation healthInformation = loggedUser.getHealthInformation().get(lastHealthInformation);
+        fullNameTextView.setText(loggedUser.getFullName());
+        stepsTextView.setText("" + healthInformation.getSteps());
+        caloriesTextView.setText("" + healthInformation.getCalories());
+        weightTextView.setText("" + healthInformation.getWeight());
+    }
+
 
     @Override
     public void onLikePost(int position) {
