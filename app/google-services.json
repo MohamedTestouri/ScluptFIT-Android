@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1021909797609",
+    "firebase_url": "https://scluptfit.firebaseio.com",
+    "project_id": "scluptfit",
+    "storage_bucket": "scluptfit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021909797609:android:92f4939cc37d1110647e78",
+        "android_client_info": {
+          "package_name": "com.esprit.arcoach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021909797609-ej6pn5i4ock8q678e1qun32ohei5uc9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtU5DrbS3zBI7TOEvVNb5RJDZsO53BPf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021909797609-ej6pn5i4ock8q678e1qun32ohei5uc9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021909797609:android:c34a516cc2371f70647e78",
+        "android_client_info": {
+          "package_name": "com.esprit.scluptfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021909797609-ej6pn5i4ock8q678e1qun32ohei5uc9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtU5DrbS3zBI7TOEvVNb5RJDZsO53BPf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021909797609-ej6pn5i4ock8q678e1qun32ohei5uc9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

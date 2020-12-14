@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -30,6 +31,11 @@ public class ExerciceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exercice);
         startButton = findViewById(R.id.startButton);
         getExercices();
+        startButton.setOnClickListener(l-> {
+            Intent intent = new Intent(ExerciceActivity.this, ArActivity.class);
+          //  intent.putExtra()
+            startActivity(intent);
+        });
     }
 
     private void getExercices() {
