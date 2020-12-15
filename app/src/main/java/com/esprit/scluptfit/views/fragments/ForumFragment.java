@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
@@ -37,6 +38,7 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
     private ArrayList<Post> postArrayList = new ArrayList<>();
     private Button addPostButton;
     private EditText postText;
+    private ProgressBar progressBar;
     PostService postService = new PostService();
 
     @Nullable
@@ -46,6 +48,7 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
         rootView = inflater.inflate(R.layout.fragment_forum, container, false);
         addPostButton = rootView.findViewById(R.id.addPostbutton);
         postText = rootView.findViewById(R.id.postTextField);
+        progressBar = rootView.findViewById(R.id.progressBar);
         addPostButton.setOnClickListener(l -> {
             addPost(postText.getText().toString());
             postText.setText("");
@@ -54,7 +57,7 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
                     .attach(this)
                     .commit();
         });
-
+        progressBar.setVisibility(View.VISIBLE);
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
                 .getAllPosts()
@@ -66,6 +69,7 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
 
                         postRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         postRecyclerView.setAdapter(forumAdapter);
+                        progressBar.setVisibility(View.GONE);
                     }
 
                     @Override

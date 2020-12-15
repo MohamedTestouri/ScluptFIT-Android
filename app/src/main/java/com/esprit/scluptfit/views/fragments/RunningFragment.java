@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 
 public class RunningFragment extends Fragment {
     private Button runButton;
+    private ProgressBar progressBar;
     private RecyclerView runsRecyclerView;
     private RunningAdapter runningAdapter;
 
@@ -37,7 +39,8 @@ public class RunningFragment extends Fragment {
         runButton.setOnClickListener(l -> {
             startActivity(new Intent(getActivity(), RunningActivity.class));
         });
-
+        progressBar = rootView.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
                 .getUserById("5fcaa72555106324acdfdfcf")
@@ -48,6 +51,7 @@ public class RunningFragment extends Fragment {
                         runsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         runsRecyclerView.setAdapter(runningAdapter);
                         Toast.makeText(getContext(), "JAWEK BEHI AALEKHER", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
                     }
 
                     @Override

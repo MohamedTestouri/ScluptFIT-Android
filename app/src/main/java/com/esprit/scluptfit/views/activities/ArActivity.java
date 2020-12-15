@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
@@ -22,6 +24,7 @@ import java.io.IOException;
 
 public class ArActivity extends AppCompatActivity {
     private ModelRenderable renderable;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,8 @@ public class ArActivity extends AppCompatActivity {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference modelRef = storage.getReference().child("pok.glb");
-
+progressBar = findViewById(R.id.progressBar2);
+progressBar.setVisibility(View.VISIBLE);
         ArFragment arFragment = (ArFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.arFragment);
 
@@ -75,8 +79,8 @@ public class ArActivity extends AppCompatActivity {
                 .setRegistryId(file.getPath())
                 .build()
                 .thenAccept(modelRenderable -> {
-                    Toast.makeText(ArActivity.this, "Model built", Toast.LENGTH_SHORT).show();
-                    ;
+                    Toast.makeText(ArActivity.this, "Click to add model", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     renderable = modelRenderable;
                 });
 
