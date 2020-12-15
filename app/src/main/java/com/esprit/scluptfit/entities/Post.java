@@ -100,6 +100,10 @@ public class Post {
         this.image = image;
         this.idUser = idUser;
     }
+    public Post(String text, String idUser) {
+        this.text = text;
+        this.idUser = idUser;
+    }
 
     public Post(String text, int likes) {
         this.text = text;

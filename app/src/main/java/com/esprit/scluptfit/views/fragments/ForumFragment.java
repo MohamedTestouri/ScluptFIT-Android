@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
+import com.esprit.scluptfit.services.PostService;
 import com.esprit.scluptfit.utils.GetDataService;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
 import com.esprit.scluptfit.views.activities.CommentActivity;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
@@ -32,16 +35,28 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
     private RecyclerView postRecyclerView;
     private ForumAdapter forumAdapter;
     private ArrayList<Post> postArrayList = new ArrayList<>();
+    private Button addPostButton;
+    private EditText postText;
+    PostService postService = new PostService();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView;
         rootView = inflater.inflate(R.layout.fragment_forum, container, false);
+        addPostButton = rootView.findViewById(R.id.addPostbutton);
+        postText = rootView.findViewById(R.id.postTextField);
+        addPostButton.setOnClickListener(l -> {
+            addPost(postText.getText().toString());
+            postText.setText("");
+            getFragmentManager().beginTransaction()
+                    .detach(this)
+                    .attach(this)
+                    .commit();
+        });
 
-
-        RetrofitClientInstance.getRetrofitInstance().
-                create(GetDataService.class)
+        RetrofitClientInstance.getRetrofitInstance()
+                .create(GetDataService.class)
                 .getAllPosts()
                 .enqueue(new Callback<ArrayList<Post>>() {
                     @Override
@@ -69,5 +84,11 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
     @Override
     public void onLikePost(int position) {
         System.out.println("CLicKeD" + position);
+    }
+
+    public void addPost(String text) {
+        Post post = new Post(text, "5fcaa6fe55106324acdfdfce");
+        postService.addPost(post);
+
     }
 }
