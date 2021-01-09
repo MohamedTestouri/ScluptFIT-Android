@@ -14,6 +14,7 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.assets.RenderableSource;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
+import com.google.ar.sceneform.ux.TransformableNode;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,6 +26,7 @@ import java.io.IOException;
 public class ArActivity extends AppCompatActivity {
     private ModelRenderable renderable;
     private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,38 +35,46 @@ public class ArActivity extends AppCompatActivity {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference modelRef = storage.getReference().child("pok.glb");
-progressBar = findViewById(R.id.progressBar2);
-progressBar.setVisibility(View.VISIBLE);
+        progressBar = findViewById(R.id.progressBar2);
+        progressBar.setVisibility(View.VISIBLE);
         ArFragment arFragment = (ArFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.arFragment);
 
-            try {
-                File file = File.createTempFile("pok", "glb");
+        try {
+            File file = File.createTempFile("pok", "glb");
 
-                modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+            modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
 
-                        Toast.makeText(ArActivity.this, "Building !", Toast.LENGTH_LONG).show();
-                        buildModel(file);
+                    Toast.makeText(ArActivity.this, "Building !", Toast.LENGTH_LONG).show();
+                    buildModel(file);
 
-                    }
-                });
+                }
+            });
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
 
             AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
-            anchorNode.setRenderable(renderable);
+            TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
+            node.getRotationController();
+            node.getScaleController();
+            node.getTranslationController();
+            node.setParent(anchorNode);
+
+            node.setRenderable(renderable);
+            // anchorNode.setRenderable(renderable);
             arFragment.getArSceneView().getScene().addChild(anchorNode);
 
         });
 
     }
+
     private void buildModel(File file) {
 
         RenderableSource renderableSource = RenderableSource

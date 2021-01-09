@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/start2"
+    android:alpha="0.95"
+    android:background="@drawable/_50582547_sporty_young_couple_with_dumbbells_on_black_background"
     android:orientation="vertical"
     tools:context=".views.activities.StartActivity">
 
@@ -12,9 +13,9 @@
         android:id="@+id/logo_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/logo2"
         android:layout_gravity="right"
-        />
+        android:src="@drawable/logo2" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp">
@@ -25,9 +26,9 @@
         android:id="@+id/logo_name1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="BUILD YOUR"
         android:layout_gravity="center"
+        android:fontFamily="@font/facon"
+        android:text="BUILD YOUR"
         android:textColor="@color/secondaryColor"
         android:textSize="50sp"
         android:transitionName="logo_text" />
@@ -37,11 +38,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/facon"
         android:text="       MUSCLE"
         android:textColor="@color/primaryColor"
         android:textSize="50sp"
-        android:transitionName="logo_text" />
+        android:transitionName="logo_text"
+        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="145dp">
@@ -51,13 +54,14 @@
     <Button
         android:id="@+id/signupButton"
         android:layout_width="300dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@color/primaryColor"
         android:rotationX="1"
         android:text="GET STARTED"
+        android:fontFamily="@font/storeb"
         android:textColor="@color/secondaryColor"
-        />
+        android:textSize="24sp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -68,14 +72,17 @@
     <Button
         android:id="@+id/login_btn"
         android:layout_width="300dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:background="@color/primaryColor"
+        android:onClick="login"
         android:text="LOGIN"
         android:textColor="@color/secondaryColor"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:onClick="login"
+        android:fontFamily="@font/storeb"
+        android:textSize="24sp"
 
         />
+
 </LinearLayout>

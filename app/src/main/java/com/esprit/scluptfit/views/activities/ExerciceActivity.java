@@ -1,6 +1,7 @@
 package com.esprit.scluptfit.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
@@ -9,7 +10,11 @@ import retrofit2.Response;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esprit.scluptfit.R;
@@ -24,18 +29,29 @@ public class ExerciceActivity extends AppCompatActivity {
     private RecyclerView exerciceRecyclerView;
     private Button startButton;
     private ExerciceAdapter exerciceAdapter;
+    private ProgressBar exerciceProgressBar;
+    private TextView categoryNameTextView;
+    private ImageButton backImageButton;
+    private ConstraintLayout topLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercice);
+        categoryNameTextView = findViewById(R.id.categoryNameTextView);
+        backImageButton = findViewById(R.id.backImageButton);
         startButton = findViewById(R.id.startButton);
+        exerciceProgressBar = findViewById(R.id.exerciceProgressBar);
+        topLayout  = findViewById(R.id.topLayout);
+        categoryNameTextView.setText(getIntent().getExtras().getString("Category"));
+        exerciceProgressBar.setVisibility(View.VISIBLE);
         getExercices();
         startButton.setOnClickListener(l-> {
             Intent intent = new Intent(ExerciceActivity.this, ArActivity.class);
           //  intent.putExtra()
             startActivity(intent);
         });
+        backImageButton.setOnClickListener(l->{finish();});
     }
 
     private void getExercices() {
@@ -45,6 +61,7 @@ public class ExerciceActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<Exercice>> call, Response<ArrayList<Exercice>> response) {
                 generateDataList(response.body());
+                exerciceProgressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override

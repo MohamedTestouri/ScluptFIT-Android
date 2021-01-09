@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,6 +58,7 @@ public class ForumFragment extends Fragment implements ForumAdapter.OnPostListen
                     .attach(this)
                     .commit();
         });
+
         progressBar.setVisibility(View.VISIBLE);
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)

@@ -18,7 +18,8 @@ import java.util.Date;
 
 import androidx.fragment.app.Fragment;
 
-public class SignupFragmentFirst extends Fragment {
+public class
+SignupFragmentFirst extends Fragment {
     private TextInputLayout firstName;
     private TextInputLayout lastName;
     private TextInputLayout phone;

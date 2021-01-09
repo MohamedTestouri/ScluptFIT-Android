@@ -13,13 +13,13 @@
         android:layout_height="72dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/rounded"
-        android:elevation="16dp"
+        android:elevation="24dp"
         android:padding="8dp"
         android:showAsAction="ifRoom"
         app:cnb_menuResource="@menu/menu_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
     <FrameLayout

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Exercice;
 import com.squareup.picasso.Picasso;
@@ -39,10 +40,11 @@ public class ExerciceAdapter extends RecyclerView.Adapter<ExerciceAdapter.Exerci
         Exercice exercice = exerciceArrayList.get(position);
         holder.descriptionExerciceTextView.setText(exercice.getDescription());
         holder.nameExerciceTextView.setText(exercice.getName());
-       Picasso.get()
+       /*Picasso.get()
                 .load(exercice.getImage())
                 .fit().centerCrop()
-                .into(holder.exerciceImageView);
+                .into(holder.exerciceImageView);*/
+        Glide.with(context).load(exercice.getImage()).into(holder.exerciceImageView);
     }
 
     @Override

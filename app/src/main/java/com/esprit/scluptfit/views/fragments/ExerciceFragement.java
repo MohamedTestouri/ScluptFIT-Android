@@ -1,6 +1,7 @@
 package com.esprit.scluptfit.views.fragments;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,17 +44,17 @@ public class ExerciceFragement extends Fragment {
         });
         armCardView.setOnClickListener(l -> {
             Intent intent = new Intent(getContext(), ExerciceActivity.class);
-            intent.putExtra("Category", "abs");
+            intent.putExtra("Category", "arm");
             startActivity(intent);
         });
         legsCardView.setOnClickListener(l -> {
             Intent intent = new Intent(getContext(), ExerciceActivity.class);
-            intent.putExtra("Category", "abs");
+            intent.putExtra("Category", "legs");
             startActivity(intent);
         });
         shoulderCardView.setOnClickListener(l -> {
             Intent intent = new Intent(getContext(), ExerciceActivity.class);
-            intent.putExtra("Category", "abs");
+            intent.putExtra("Category", "shoulder");
             startActivity(intent);
         });
 
