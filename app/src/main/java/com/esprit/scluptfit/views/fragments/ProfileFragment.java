@@ -12,13 +12,20 @@ import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
 import com.esprit.scluptfit.services.UserService;
+import com.esprit.scluptfit.utils.GetDataService;
+import com.esprit.scluptfit.utils.RetrofitClientInstance;
 import com.esprit.scluptfit.views.activities.StartActivity;
 import com.esprit.scluptfit.views.adapters.ForumAdapter;
 
 import java.util.ArrayList;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ProfileFragment extends Fragment implements ForumAdapter.OnPostListener {
@@ -77,9 +84,9 @@ public class ProfileFragment extends Fragment implements ForumAdapter.OnPostList
                     }
                 });*/
 
-        /*RetrofitClientInstance.getRetrofitInstance()
+        RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
-                .getPostsByIdUser(loggedUser.getIdUser())
+                .getPostsByIdUser("5fcaa6fe55106324acdfdfce")
                 .enqueue(new Callback<ArrayList<Post>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
@@ -93,7 +100,7 @@ public class ProfileFragment extends Fragment implements ForumAdapter.OnPostList
                     public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
 
                     }
-                });*/
+                });
         return rootView;
 
     }

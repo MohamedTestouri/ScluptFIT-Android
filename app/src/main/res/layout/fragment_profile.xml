@@ -5,76 +5,167 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.ProfileFragment"
-    android:background="@color/primaryBackground">
+    android:background="@color/secondaryColor">
+
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="850dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@color/primaryColor"
-                android:padding="20dp">
-
-                <ImageView
-                    android:id="@+id/profileImage"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/profile1" />
-
-                <TextView
-                    android:id="@+id/fullNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/profileImage"
-                    android:fontFamily="@font/bangers"
-                    android:text="Wassim Sefi"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/logoutButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="16dp"
-                    android:text="Logout" />
-
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/rounded2"
+                android:orientation="vertical"
                 android:padding="20dp">
+
+                
+                <Button
+                    android:id="@+id/logoutButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:layout_gravity="right"
+
+                    />
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_user"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/fullNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+
+                    android:fontFamily="@font/bangers"
+
+                    android:layout_gravity="center"
+                    android:text="Wassim Sefi"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="40dp"
+
+                    >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Phone : "
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/phoneTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:text="28 105 806"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Sexe : "
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/sexeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:text="Male"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Email : "
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/emailTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:text="wassim.sefi@esprit.tn"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+             >
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="125dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/primaryColor"
+                    app:cardBackgroundColor="@color/secondaryColor"
                     app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="5dp">
+                        android:padding="10dp"
+                        android:background="@drawable/rounded2">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/booking" />
+                            android:src="@drawable/booking"
+                            android:background="@color/secondaryColor"/>
 
                         <TextView
                             android:id="@+id/stepsssTextView"
@@ -84,7 +175,8 @@
                             android:fontFamily="@font/bangers"
                             android:includeFontPadding="false"
                             android:text="82"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textColor="@color/secondaryColor"/>
 
                         <TextView
                             android:id="@+id/taille_desc"
@@ -93,7 +185,8 @@
                             android:layout_below="@+id/stepsssTextView"
                             android:layout_centerInParent="true"
                             android:text="Steps"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textColor="@color/secondaryColor"/>
 
                     </RelativeLayout>
 
@@ -104,19 +197,21 @@
                     android:layout_height="125dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/primaryColor"
+                    app:cardBackgroundColor="@color/secondaryColor"
                     app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="5dp">
+                        android:padding="10dp"
+                        android:background="@drawable/rounded2">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/booking" />
+                            android:src="@drawable/booking"
+                            android:background="@color/secondaryColor"/>
 
                         <TextView
                             android:id="@+id/caloriesTextView"
@@ -126,7 +221,8 @@
                             android:fontFamily="@font/bangers"
                             android:includeFontPadding="false"
                             android:text="39 KCL"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textColor="@color/secondaryColor"/>
 
                         <TextView
                             android:id="@+id/caloriesLabel"
@@ -135,7 +231,8 @@
                             android:layout_below="@+id/caloriesTextView"
                             android:layout_centerInParent="true"
                             android:text="Calories"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textColor="@color/secondaryColor"/>
 
                     </RelativeLayout>
 
@@ -146,19 +243,21 @@
                     android:layout_height="125dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/primaryColor"
+                    app:cardBackgroundColor="@color/secondaryColor"
                     app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="5dp">
+                        android:padding="10dp"
+                        android:background="@drawable/rounded2">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/booking" />
+                            android:src="@drawable/booking"
+                            android:background="@color/secondaryColor"/>
 
                         <TextView
                             android:id="@+id/weightTextView"
@@ -168,7 +267,8 @@
                             android:fontFamily="@font/bangers"
                             android:includeFontPadding="false"
                             android:text="96 KG"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textColor="@color/secondaryColor"/>
 
                         <TextView
                             android:id="@+id/weightLabel"
@@ -177,13 +277,27 @@
                             android:layout_below="@+id/weightTextView"
                             android:layout_centerInParent="true"
                             android:text="Poid"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textColor="@color/secondaryColor"/>
 
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Post"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:layout_marginLeft="30dp"
+
+
+                />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,6 +310,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>
