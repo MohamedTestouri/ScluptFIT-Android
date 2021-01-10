@@ -77,7 +77,7 @@
                             android:src="@drawable/booking" />
 
                         <TextView
-                            android:id="@+id/stepsTextView"
+                            android:id="@+id/stepsssTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -90,7 +90,7 @@
                             android:id="@+id/taille_desc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/stepsTextView"
+                            android:layout_below="@+id/stepsssTextView"
                             android:layout_centerInParent="true"
                             android:text="Steps"
                             android:textSize="20sp" />

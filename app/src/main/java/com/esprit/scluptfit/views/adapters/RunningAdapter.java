@@ -10,6 +10,7 @@ import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +33,10 @@ public class RunningAdapter extends RecyclerView.Adapter<RunningAdapter.RunningV
 
     @Override
     public void onBindViewHolder(@NonNull RunningViewHolder holder, int position) {
-        User.Run run = runArrayList.get(position);
+        System.out.println("not reversed" + runArrayList.toString());
+       Collections.reverse(runArrayList);
+        System.out.println(" reversed" + runArrayList.toString());
+        User.Run run = runArrayList .get(position);
         holder.dateTextView.setText(run.getDate().toString());
         holder.durationTextView.setText(run.getDuration().toString()+" minutes");
         holder.distanceTextView.setText(run.getDistance().toString()+" KM");

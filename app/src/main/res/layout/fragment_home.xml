@@ -1,209 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.fragments.HomeFragment"
-    android:orientation="vertical">
+    tools:context=".views.fragments.HomeFragment">
 
-    <LinearLayout
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/stepsPieChart"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.github.mikephil.charting.charts.PieChart>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:src="@drawable/baseline_local_fire_department_white_18"
+        app:layout_constraintBottom_toTopOf="@+id/stepsTextView"
+        app:layout_constraintEnd_toEndOf="@+id/stepsPieChart"
+        app:layout_constraintStart_toStartOf="@+id/stepsPieChart"
+        app:layout_constraintTop_toTopOf="@+id/stepsPieChart"
+        app:layout_constraintVertical_bias="0.95" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="125dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="@color/primaryColor"
-            app:cardElevation="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/booking" />
-
-                <TextView
-                    android:id="@+id/taille_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/bangers"
-                    android:includeFontPadding="false"
-                    android:text="82 m"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/taille_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/taille_label"
-                    android:layout_centerInParent="true"
-                    android:text="Taille"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="125dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="@color/primaryColor"
-            app:cardElevation="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/booking" />
-
-                <TextView
-                    android:id="@+id/calorie_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/bangers"
-                    android:includeFontPadding="false"
-                    android:text="39 KCL"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/calorie_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/calorie_label"
-                    android:layout_centerInParent="true"
-                    android:text="Calories"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="125dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="@color/primaryColor"
-            app:cardElevation="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/booking" />
-
-                <TextView
-                    android:id="@+id/poid_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/bangers"
-                    android:includeFontPadding="false"
-                    android:text="96 KG"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/poid_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/poid_label"
-                    android:layout_centerInParent="true"
-                    android:text="Poid"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/stepsTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp">
-
-
-
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="125dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="@color/primaryColor"
-            app:cardElevation="10dp"
-            app:cardCornerRadius="8dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/booking" />
-
-                <TextView
-                    android:id="@+id/stepsTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/bangers"
-                    android:includeFontPadding="false"
-                    android:text="96 KM"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/steps_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/stepsTextView"
-                    android:layout_centerInParent="true"
-                    android:text="Steps"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
+        android:text="TextView"
+        android:textColor="@color/secondaryColor"
+        app:layout_constraintBottom_toBottomOf="@+id/stepsPieChart"
+        app:layout_constraintEnd_toEndOf="@+id/stepsPieChart"
+        app:layout_constraintStart_toStartOf="@+id/stepsPieChart"
+        app:layout_constraintTop_toTopOf="@+id/stepsPieChart" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,28 +63,24 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    app:cardElevation="4dp"
+                    android:layout_marginTop="8dp"
                     app:cardCornerRadius="8dp"
-                    >
+                    app:cardElevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:weightSum="2"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        android:weightSum="2">
 
                         <com.github.mikephil.charting.charts.LineChart
                             android:id="@+id/barChart"
-                            android:layout_height="300dp"
-                            android:layout_width="match_parent"/>
-
-
-
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp" />
 
 
                     </LinearLayout>
@@ -243,11 +90,72 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/primaryColor">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_local_fire_department_24" />
 
+                <TextView
+                    android:id="@+id/calorieTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TextView" />
+            </LinearLayout>
 
+        </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/primaryColor">
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_local_fire_department_24" />
+
+                <TextView
+                    android:id="@+id/sumExerciceTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

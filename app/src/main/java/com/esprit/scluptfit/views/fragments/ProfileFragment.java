@@ -1,7 +1,6 @@
 package com.esprit.scluptfit.views.fragments;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,23 +12,13 @@ import com.esprit.scluptfit.R;
 import com.esprit.scluptfit.entities.Post;
 import com.esprit.scluptfit.entities.User;
 import com.esprit.scluptfit.services.UserService;
-import com.esprit.scluptfit.utils.GetDataService;
-import com.esprit.scluptfit.utils.RetrofitClientInstance;
 import com.esprit.scluptfit.views.activities.StartActivity;
 import com.esprit.scluptfit.views.adapters.ForumAdapter;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static android.content.Context.MODE_PRIVATE;
-import static com.esprit.scluptfit.services.UserService.sharedPrefFile;
 
 
 public class ProfileFragment extends Fragment implements ForumAdapter.OnPostListener {
@@ -53,7 +42,7 @@ public class ProfileFragment extends Fragment implements ForumAdapter.OnPostList
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         logoutButton = rootView.findViewById(R.id.logoutButton);
         fullNameTextView = rootView.findViewById(R.id.fullNameTextView);
-        stepsTextView = rootView.findViewById(R.id.stepsTextView);
+        stepsTextView = rootView.findViewById(R.id.stepsssTextView);
         caloriesTextView = rootView.findViewById(R.id.caloriesTextView);
         weightTextView = rootView.findViewById(R.id.weightTextView);
         myPostsRecyclerView = rootView.findViewById(R.id.myPostsRecyclerView);

@@ -10,4 +10,5 @@
     <color name="primaryBackground">#FF262626</color>
     <color name="primaryColor">#FFE30F39</color>
     <color name="secondaryColor">#FFFCFCFC</color>
+    <color name="transparent">#00000000</color>
 </resources>

@@ -45,7 +45,7 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
     private FusedLocationProviderClient client;
     private LocationManager locationManager;
     private LatLng latLng;
-    private Button stopButton;
+    private Boolean clicked = false;
     private Button startButton;
     private Chronometer chronometer;
     private boolean running;
@@ -60,9 +60,8 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
 
         View rootView = inflater.inflate(R.layout.fragment_run, container, false);
         distanceTextView = rootView.findViewById(R.id.distanceTextView);
-        stopButton = rootView.findViewById(R.id.stopButton);
         startButton = rootView.findViewById(R.id.startButton);
-        startButton.setOnClickListener(l -> startChronometer());
+
 //Chrono
         chronometer = rootView.findViewById(R.id.chronometer);
         chronometer.setFormat("Time: %m");
@@ -115,24 +114,34 @@ public class RunFragment extends Fragment implements OnMapReadyCallback {
                     }
                 }
             });
-            stopButton.setOnClickListener(l -> {
-                double latitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
-                double longitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
-                LatLng endPosition = new LatLng(latitude, longitude);
-                PolylineOptions lineOptions = new PolylineOptions()
-                        .add(latLng)
-                        .add(endPosition)
-                        .width(5)
-                        .color(Color.parseColor("#FFE30F39"));
-                map.addPolyline(lineOptions);
-                map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("End Position"));
-                stopChronometer();
-                double time = (double) (SystemClock.elapsedRealtime() - chronometer.getBase()) / 60000;
-                double duration = Double.valueOf(format.format(time));
-                double distance = Double.valueOf(format.format(CalculationByDistance(latLng, endPosition)));
-                userService.addRun( getContext(), new User.Run(10.0, distance, duration));
-                distanceTextView.setText(distance + " KM");
-                getActivity().finish();
+            startButton.setOnClickListener(l -> {
+                if (!clicked) {
+                    startChronometer();
+                    clicked = true;
+                    startButton.setText("Stop Running");
+                } else {
+                    stopChronometer();
+                    clicked = false;
+                    startButton.setText("Start Running");
+                    double latitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
+                    double longitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
+                    LatLng endPosition = new LatLng(latitude, longitude);
+                    PolylineOptions lineOptions = new PolylineOptions()
+                            .add(latLng)
+                            .add(endPosition)
+                            .width(5)
+                            .color(Color.parseColor("#FFE30F39"));
+                    map.addPolyline(lineOptions);
+                    map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("End Position"));
+                    stopChronometer();
+                    double time = (double) (SystemClock.elapsedRealtime() - chronometer.getBase()) / 60000;
+                    double duration = Double.valueOf(format.format(time));
+                    double distance = Double.valueOf(format.format(CalculationByDistance(latLng, endPosition)));
+                    userService.addRun( getContext(), new User.Run(10.0, distance, duration));
+                    distanceTextView.setText(distance + " KM");
+                    getActivity().finish();
+
+                }
             });
         } else {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
