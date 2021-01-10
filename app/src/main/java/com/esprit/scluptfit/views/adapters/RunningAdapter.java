@@ -38,7 +38,7 @@ public class RunningAdapter extends RecyclerView.Adapter<RunningAdapter.RunningV
         System.out.println(" reversed" + runArrayList.toString());
         User.Run run = runArrayList .get(position);
         holder.dateTextView.setText(run.getDate().toString());
-        holder.durationTextView.setText(run.getDuration().toString()+" minutes");
+        holder.durationTextView.setText(run.getDuration().toString()+" min");
         holder.distanceTextView.setText(run.getDistance().toString()+" KM");
         holder.caloriesTextView.setText(run.getCalories().toString());
     }

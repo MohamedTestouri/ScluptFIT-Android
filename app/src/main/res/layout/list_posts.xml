@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/rounded2"
     >
 
  <RelativeLayout
@@ -19,14 +20,15 @@
          android:layout_height="45dp"
          android:adjustViewBounds="true"
          android:scaleType="fitCenter"
-         android:src="@drawable/profile1"/>
+         android:src="@drawable/ic_user"/>
      <LinearLayout
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_centerVertical="true"
          android:layout_marginLeft="10dp"
          android:layout_toRightOf="@id/img_profile"
-         android:orientation="vertical">
+         android:orientation="vertical"
+         >
          <TextView
              android:id="@+id/nameUserTextView"
              android:layout_width="wrap_content"
@@ -34,14 +36,14 @@
              android:fontFamily="sans-serif-medium"
              android:text="Wassim Sefi"
              android:textSize="17sp"
-             android:textColor="#000"/>
+             android:textColor="@color/secondaryColor"/>
          <TextView
              android:id="@+id/datePostTextView"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:fontFamily="sans-serif"
              android:text="12 hrs"
-             android:textColor="#707070"
+             android:textColor="@color/secondaryColor"
              android:textSize="10sp"/>
 
 
@@ -60,7 +62,7 @@
         android:layout_marginTop="15dp"
         android:text="This is status"
         android:textSize="14sp"
-        android:textColor="#000"/>
+        android:textColor="@color/secondaryColor"/>
 
     <ImageView
         android:id="@+id/imagePostImageView"
@@ -94,7 +96,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="18"
-            android:textSize="13sp"/>
+            android:textSize="13sp"
+            android:textColor="@color/secondaryColor"/>
         </LinearLayout>
 
         <TextView
@@ -102,6 +105,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/nbr_comment"
             android:text="6 comments"
+            android:textColor="@color/secondaryColor"
             android:layout_alignParentRight="true"
             android:textSize="13sp"/>
 
@@ -116,6 +120,7 @@
         android:layout_marginTop="10dp"
         android:background="#707070"/>
     <LinearLayout
+        android:id="@+id/espace2"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_below="@id/espace">
@@ -143,7 +148,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:text="Like"
                     android:textSize="13sp"
-                    android:textColor="#000"/>
+                    android:textColor="@color/secondaryColor"/>
 
 
 
@@ -168,7 +173,8 @@
                     android:layout_height="18dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_comment"/>
+                    android:src="@drawable/ic_comment"
+                    android:background="@color/secondaryColor"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -176,7 +182,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:text="Comment"
                     android:textSize="13sp"
-                    android:textColor="#000"/>
+                    android:textColor="@color/secondaryColor"/>
 
 
 
@@ -187,6 +193,18 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@id/espace2"
+        android:layout_marginTop="15dp"
+        android:background="@color/secondaryColor"
+        />
+
+
 
 
 

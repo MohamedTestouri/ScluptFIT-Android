@@ -21,7 +21,7 @@
         android:id="@+id/imageView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_local_fire_department_white_18"
+        android:src="@drawable/ic_comment"
         app:layout_constraintBottom_toTopOf="@+id/stepsTextView"
         app:layout_constraintEnd_toEndOf="@+id/stepsPieChart"
         app:layout_constraintStart_toStartOf="@+id/stepsPieChart"

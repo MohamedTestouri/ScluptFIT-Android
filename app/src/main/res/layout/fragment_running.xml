@@ -7,6 +7,41 @@
     tools:context=".views.fragments.RunningFragment"
     android:background="@color/primaryBackground">
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/runsRecyclerView"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:weightSum="2">
+
+
+        <TextView
+            android:id="@+id/fullNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/profileImage"
+            android:fontFamily="@font/bangers"
+            android:text="RUNNING"
+            android:textSize="40sp"
+            android:textColor="@color/ic_launcher_background"/>
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/run1"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/run"
@@ -41,6 +76,6 @@
         app:layout_constraintBottom_toTopOf="@+id/run"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
