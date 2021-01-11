@@ -6,6 +6,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
+    public User(String idUser) {
+        this.idUser = idUser;
+    }
+    public User() {
+
+    }
+
     @SerializedName("_id")
     private String idUser;
     @SerializedName("fullName")

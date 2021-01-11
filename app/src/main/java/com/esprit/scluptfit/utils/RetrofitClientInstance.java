@@ -8,6 +8,8 @@ public class RetrofitClientInstance {
 
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://sclupt-fit.herokuapp.com";
+  ///  private static final String BASE_URL = "http://10.0.2.2:6666";
+
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {

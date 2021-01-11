@@ -13,6 +13,7 @@ import com.esprit.scluptfit.utils.LoginResponse;
 import com.esprit.scluptfit.utils.RetrofitClientInstance;
 import com.esprit.scluptfit.views.activities.HomeActivity;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +34,7 @@ public class UserService {
     public static final String sharedPrefFile = "com.esprit.scluptfit";
     public SharedPreferences sharedPreferences;
 
-    public void getAllUsers( ) {
+    public void getAllUsers() {
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
                 .getAllUsers()
@@ -52,14 +53,16 @@ public class UserService {
 
     public User getUserById(Context context) {
         sharedPreferences = context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-         User currentUser = new Gson().fromJson(sharedPreferences.getString("currentUser", ""), User.class);
-
+        User currentUser = new User();
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
-                .getUserById(currentUser.getIdUser())
+                .getUserById(sharedPreferences.getString("currentUser",""))
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.body() != null) {
+                            System.out.println("resbody" + response.body().toString());
+                        }
                     }
 
                     @Override
@@ -67,7 +70,7 @@ public class UserService {
 
                     }
                 });
-        System.out.println(currentUser.getIdUser()+"");
+//        System.out.println(currentUser.getIdUser()+"");
         return currentUser;
     }
 
@@ -80,12 +83,9 @@ public class UserService {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if (response.body() != null) {
+                        System.out.println("hiiiiiiiiiiiiiiiiii: "+response.body().getIdUser());
                             SharedPreferences.Editor preferencesEditor = sharedPreferences.edit();
-                            User currentUser = response.body();
-                            Gson gson = new Gson();
-                            String json = gson.toJson(currentUser);
-                            System.out.println(json.toString());
-                            preferencesEditor.putString("currentUser", json);
+                            preferencesEditor.putString("currentUser", response.body().getIdUser());
                             preferencesEditor.apply();
                             context.startActivity(new Intent(context, HomeActivity.class));
                         } else {
@@ -110,11 +110,7 @@ public class UserService {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         SharedPreferences.Editor preferencesEditor = sharedPreferences.edit();
-                        User currentUser = response.body();
-                        Gson gson = new Gson();
-                        String json = gson.toJson(currentUser);
-                        System.out.println(json.toString());
-                        preferencesEditor.putString("currentUser", json);
+                        preferencesEditor.putString("currentUser", response.body().getIdUser());
                         preferencesEditor.apply();
 
                     }
@@ -150,10 +146,9 @@ public class UserService {
 
     public void addActivity(Context context) {
         sharedPreferences = context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        User currentUser = new Gson().fromJson(sharedPreferences.getString("currentUser", ""), User.class);
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
-                .addActivity(currentUser.getIdUser(),
+                .addActivity(sharedPreferences.getString("currentUser", ""),
                         Double.parseDouble("22"),
                         "5fb2fce6a5a5f01e485444fa")
                 .enqueue(new Callback<ResponseBody>() {
@@ -171,9 +166,8 @@ public class UserService {
 
     public void addHealthInformation(Context context, User.HealthInformation healthInformation) {
         sharedPreferences = context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        User currentUser = new Gson().fromJson(sharedPreferences.getString("currentUser", ""), User.class);
         RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class)
-                .addHealthInformation(currentUser.getIdUser(),
+                .addHealthInformation(sharedPreferences.getString("currentUser", ""),
                         healthInformation.getCalories(),
                         Double.valueOf(healthInformation.getSteps()),
                         healthInformation.getWeight(),
@@ -192,10 +186,9 @@ public class UserService {
 
     public void addRun(Context context, User.Run run) {
         sharedPreferences = context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        User currentUser = new Gson().fromJson(sharedPreferences.getString("currentUser", ""), User.class);
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
-                .addRun(currentUser.getIdUser(), run.getCalories(), run.getDistance(), run.getDuration())
+                .addRun(sharedPreferences.getString("currentUser", ""), run.getCalories(), run.getDistance(), run.getDuration())
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

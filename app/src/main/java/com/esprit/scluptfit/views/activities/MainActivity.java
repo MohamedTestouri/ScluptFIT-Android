@@ -47,7 +47,12 @@ public class MainActivity extends AppCompatActivity {
                         Pair[] pairs = new Pair[1];
                         pairs[0] = new Pair<View, String>(image, "logo_image");
                         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
-                        startActivity(intent, options.toBundle());
+                        if (getSharedPreferences(sharedPrefFile, MODE_PRIVATE).contains("currentUser"))
+                        {
+                            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                        }else {
+                            startActivity(intent, options.toBundle());
+                        }
                         finish();
                     }
                 }, SPLASH_SCREEN);

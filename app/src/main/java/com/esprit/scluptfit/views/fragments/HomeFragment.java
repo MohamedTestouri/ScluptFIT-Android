@@ -41,6 +41,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.esprit.scluptfit.services.UserService.sharedPrefFile;
 
 public class HomeFragment extends Fragment implements SensorEventListener {
 
@@ -62,7 +63,7 @@ public class HomeFragment extends Fragment implements SensorEventListener {
         caloriesTextView = rootView.findViewById(R.id.calorieTextView);
         runsTextView = rootView.findViewById(R.id.runsTextView);
         sensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
-
+        System.out.println("SharedPrefs"+getContext().getSharedPreferences(sharedPrefFile, MODE_PRIVATE).getString("currentUser", ""));
         getInformations();
         // START PIE CHART
         stepsPieChart.setUsePercentValues(false);

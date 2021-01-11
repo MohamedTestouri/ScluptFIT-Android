@@ -40,11 +40,7 @@ public class StartActivity extends AppCompatActivity {
         slogan3.setAnimation(topAnim);
         signupButton = findViewById(R.id.signupButton);
         signupButton.setOnClickListener(l->{signup();});
-        sharedPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        if (sharedPreferences.contains("currentUser"))
-        {
-            startActivity(new Intent(StartActivity.this, HomeActivity.class));
-        }
+
     }
 
     public void login(View view) {
