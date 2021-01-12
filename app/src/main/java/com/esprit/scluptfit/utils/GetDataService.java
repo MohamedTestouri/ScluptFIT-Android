@@ -37,7 +37,7 @@ public interface GetDataService {
     Call<ArrayList<User>> getAllUsers();
 
     @GET("/users/find/{id}")
-    Call<User> getUserById(@Path("id") String idUser);
+    Call<User> getUserById(@Path("id") String _id);
 
     @POST("/users/hi/{idUser}&{calories}&{steps}&{weight}&{height}")
     Call<Void> addHealthInformation(@Path("idUser") String idUser,

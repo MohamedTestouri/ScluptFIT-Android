@@ -174,8 +174,8 @@ public class HomeFragment extends Fragment implements SensorEventListener {
     public void getInformations() {
         UserService userService = new UserService();
         User currentUser = userService.getUserById(getContext());
-        caloriesTextView.setText("aa");
-        runsTextView.setText("bb");
+        caloriesTextView.setText("725");
+        runsTextView.setText("6");
     }
 
 }

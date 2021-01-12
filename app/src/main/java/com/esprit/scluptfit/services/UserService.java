@@ -22,11 +22,13 @@ import org.json.JSONStringer;
 import java.util.ArrayList;
 import java.util.Map;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Headers;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -53,26 +55,30 @@ public class UserService {
 
     public User getUserById(Context context) {
         sharedPreferences = context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        Log.d("TAG", "getUserById: "+sharedPreferences.getString("currentUser",""));
+        String idCurrentUser = sharedPreferences.getString("currentUser","");
         User currentUser = new User();
         RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class)
-                .getUserById(sharedPreferences.getString("currentUser",""))
+                .getUserById(idCurrentUser)
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if (response.body() != null) {
-                            System.out.println("resbody" + response.body().toString());
+                            Toast.makeText(context, "not null", Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-
+Toast.makeText(context, "ERROR", Toast.LENGTH_LONG).show();
                     }
                 });
 //        System.out.println(currentUser.getIdUser()+"");
         return currentUser;
     }
+
+
 
     public void Login(Context context, User user) {
         sharedPreferences = context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
